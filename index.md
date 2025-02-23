@@ -49,11 +49,11 @@ A Platform Engineer is responsible for building and maintaining the platform tha
 - **🔐 Ensuring security best practices are followed**
 - **🤝 Collaborating with development teams to understand their needs and provide solutions**
 
-## Platform Engineering Certfication Pathways
+## Platform Engineering Certification Pathways
 
 Check out our community-curated section on certification paths designed to support your platform engineering journey here: 
 
-- **[Certifcations](docs/certifications.md)**
+- **[Certifications](docs/certifications.md)**
 
 ## Platform Engineering Podcasts
 
