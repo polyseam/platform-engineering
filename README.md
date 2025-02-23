@@ -59,6 +59,8 @@ Explore our comprehensive index of platform engineering topics and modules to de
 <!-- Invitation for contributions and participation -->
 We welcome contributions from everyone. Feel free to open issues, submit pull requests, and join discussions to help us improve and expand this resource.
 
+Review our [contributing policy here](/CONTRIBUTING.md)
+
 <!-- Closing thank you note -->
 Thank you for being a part of our journey!
 
