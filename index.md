@@ -65,7 +65,7 @@ Explore our curated list of podcasts covering Cloud Native, Platform Engineering
 
 Looking to trick out your terminal, switch VS Code to dark mode, or just nail that pro developer aesthetic? Look no further! Check out our docs on customizing your development environment and take your platform engineering setup to the next level. 🚀
 
--**[Dev-Setup](docs/development_setup)**
+- **[Dev-Setup](docs/development_setup)**
 
 
 ## Conclusion
