@@ -18,7 +18,8 @@ As `<who>` `<when>` `<where>`, I want `<what>` because `<why>`
 
 <!--
 - What is changed? How can someone run the code or test? How can it be observed?
-- LOOM VIDEOS ARE GREAT! 
+- Loom videos are a great way to explain what this PR is for and any nuances around the files
+- [Example Loom](https://www.loom.com/share/c5255ca8ab94481e89b2f1f36bb7731f?sid=367733cf-bd3e-402c-ae30-67c3558885b3) 
 -->
 
 ## Quality assurance steps
