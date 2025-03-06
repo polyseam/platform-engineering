@@ -25,6 +25,13 @@ In today's fast-paced tech environment, organizations need to innovate quickly w
 - **📈 Improving Reliability**: Standardizing infrastructure and processes to reduce errors and increase system stability.
 - **💡 Fostering Innovation**: Enabling teams to experiment and iterate rapidly by providing a flexible and scalable platform.
 
+## Platform Tooling Landscape
+The platform engineering tooling landscape is rapidly evolving, encompassing a wide range of technologies that streamline developer workflows, enhance automation, and improve infrastructure management. This includes **Internal Developer Platforms (IDPs)**, **Infrastructure as Code (IaC)** tools, **GitOps**, **service meshes**, and **cloud-native runtime environments**.  
+
+For a deeper dive into the current state of platform engineering and its tooling ecosystem, check out this overview:  
+
+- **[Platform Engineering Landscape Overview]**(docs/platform_engineering_landscape.md) 🚀
+
 ## Key Components of Platform Engineering
 
 Platform Engineering encompasses several key components:
@@ -39,6 +46,18 @@ Platform Engineering encompasses several key components:
 - **[Internal Development Platforms](docs/internal_development_platforms.md)**: Centralized platforms providing developers with self-service access to tools, environments, and resources needed for development.
 - **[Kubernetes](docs/kubernetes.md)**: Orchestrating containerized applications for automated deployment, scaling, and management.
 
+## Platform Engineering Reference Architecture  
+
+A **Platform Engineering Reference Architecture** provides a standardized framework for building scalable, secure, and efficient internal developer platforms (IDPs). It integrates key components like **Infrastructure as Code (IaC)**, **GitOps workflows**, **Kubernetes-based orchestration**, and **self-service developer portals** to streamline cloud-native application delivery.  
+
+### Cloud-Specific Architectures  
+
+For a deep dive into platform engineering architectures tailored to specific cloud environments, check out the following:  
+
+- 🔹 **Azure**: [*Azure Platform Engineering Architecture*](docs/images/azure_ref_architecture.jpg)  
+- 🔹 **Red Hat OpenShift**: [*OpenShift Platform Engineering Architecture*](docs/images/red_hat_openshift_ref_architecture.jpg)  
+
+\* Credit to platform engineering org
 ## The Role of a Platform Engineer
 
 A Platform Engineer is responsible for building and maintaining the platform that supports the entire software development lifecycle. This includes:
