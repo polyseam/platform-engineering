@@ -30,7 +30,7 @@ The platform engineering tooling landscape is rapidly evolving, encompassing a w
 
 For a deeper dive into the current state of platform engineering and its tooling ecosystem, check out this overview:  
 
-- **[Platform Engineering Landscape Overview]**(docs/platform_engineering_landscape.md) 🚀
+- **[Platform Engineering Landscape Overview](docs/platform_engineering_landscape.md)** 🚀
 
 ## Key Components of Platform Engineering
 
