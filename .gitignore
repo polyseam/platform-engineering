@@ -2,3 +2,4 @@
 config/secrets.yml
 *.pem
 *.key
+.DS_Store
