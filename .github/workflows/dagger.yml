@@ -10,10 +10,18 @@ jobs:
       contents: read
       packages: write
     steps:
-      - name: Call Dagger Function
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Call Basic Dagger Hello Function
         uses: dagger/dagger-for-github@8.0.0
         with:
           version: "latest"
           verb: call
           module: github.com/shykes/daggerverse/hello@v0.1.2
           args: hello --greeting="hey there!"
+      - name: Run Terraform Plan
+        uses: dagger/dagger-for-github@8.0.0
+        with:
+          verb: run
+          args: python main.py
+          version: "latest"
