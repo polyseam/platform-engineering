@@ -251,7 +251,7 @@ You will note we are passing through a few command line arguments being used her
 
 The output of that command will be similar to the below:
 
-![Terraform Plan Output](docs/dagger/assets/dagger_call_plan_local.png)
+![Terraform Plan Output](assets/dagger_call_plan_local.png)
 
 The output of the plan is looking good, but instead of running the apply locally, lets get our existing functionality into GitHub actions and run our pipeline there!
 
