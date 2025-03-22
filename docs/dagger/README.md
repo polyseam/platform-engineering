@@ -96,11 +96,11 @@ Inside of the same Dagger directory, we are going to run a few Dagger CLI comman
 dagger init --sdk=python --source=./terraform_dagger_pipeine --name=platform_engineering
 ```
 
-The above Dagger CLI command initializes the new module, and you will note we are passing through a few command line arguments:
+The above Dagger CLI command called `init` initializes the new module, and you will note we are passing through a few command line arguments:
 
-- sdk: Dagger makes available a few SDKs. They have support for Go, Python, TypeScript, PHP, and Java. In this case, we are using Python.
-- source: Source directory used by the installed sdk. In our case, we are asking Dagger to initialize in the ./terraform_dagger_pipeine directory
-- name: Name of the new module
+- sdk: dagger makes available a few SDKs. They have support for Go, Python, TypeScript, PHP, and Java. In this case, we are using Python.
+- source: source directory used by the installed sdk. In our case, we are asking Dagger to initialize in the ./terraform_dagger_pipeine directory
+- name: name of the new module
 
 All this together will create a new directory in our Dagger folder called ‘terraform_dagger_pipeine’ with some default configurations.
 
@@ -152,7 +152,7 @@ from dagger import dag, function, object_type, Doc, Secret
 @object_type
 class PlatformEngineering:
     @function
-    async def publish(
+    async def plan(
         self,
         source: dagger.Directory,
         client_id: Annotated[dagger.Secret, Doc("Azure Client ID")],
@@ -161,19 +161,33 @@ class PlatformEngineering:
         tenant_id: Annotated[dagger.Secret, Doc("Azure Tenant ID")],
     ) -> str:
         """
-        Publish the application container after building and testing it on-the-fly.
+        Runs `terraform plan` using Azure credentials stored as secrets.
 
-        This function first runs the Terraform plan using Azure credentials stored as secrets.
-        Then, it returns the output of the Terraform execution.
+        This function executes Terraform inside a container, securely passing in Azure authentication credentials.
+        It returns the Terraform plan output for review.
         """
-        terraform_output = await self.run_terraform(
-            source, client_id, client_secret, subscription_id, tenant_id
-        )
-        return f"Terraform Plan Output:\n{terraform_output}"
+        return await self.run_terraform("plan", source, client_id, client_secret, subscription_id, tenant_id)
 
     @function
+    async def apply(
+        self,
+        source: dagger.Directory,
+        client_id: Annotated[dagger.Secret, Doc("Azure Client ID")],
+        client_secret: Annotated[dagger.Secret, Doc("Azure Client Secret")],
+        subscription_id: Annotated[dagger.Secret, Doc("Azure Subscription ID")],
+        tenant_id: Annotated[dagger.Secret, Doc("Azure Tenant ID")],
+    ) -> str:
+        """
+        Runs `terraform apply` to apply the planned changes using Azure authentication.
+
+        This function first ensures Terraform is initialized, then executes the apply step.
+        The execution is done inside a container, securely injecting the necessary secrets.
+        """
+        return await self.run_terraform("apply", source, client_id, client_secret, subscription_id, tenant_id)
+
     async def run_terraform(
         self,
+        command: str,
         directory_arg: dagger.Directory,
         client_id: dagger.Secret,
         client_secret: dagger.Secret,
@@ -181,28 +195,30 @@ class PlatformEngineering:
         tenant_id: dagger.Secret,
     ) -> str:
         """
-        Runs Terraform init and plan with Azure authentication.
+        Runs Terraform (`plan` or `apply`) with Azure authentication.
 
-        This function mounts the Terraform directory inside a Dagger container,
-        injects Azure credentials securely using Dagger secrets, and executes Terraform commands.
+        - Mounts the Terraform directory inside a Dagger container.
+        - Injects Azure credentials securely as environment variables.
+        - Executes Terraform commands (`terraform init`, then `terraform plan` or `terraform apply`).
         """
+        terraform_command = ["terraform", command]
+        
+        # Add auto-approve if it's an apply command
+        if command == "apply":
+            terraform_command.append("-auto-approve")
+
         container = (
             dag.container()
-            # Use official Terraform image
-            .from_("hashicorp/terraform:1.11")
-            # Mount the working directory
+            .from_("hashicorp/terraform:1.11")  # Use official Terraform image
             .with_mounted_directory("/mnt", directory_arg)
             .with_workdir("/mnt")
-            # Inject Azure credentials as secrets
             .with_secret_variable("ARM_CLIENT_ID", client_id)
             .with_secret_variable("ARM_CLIENT_SECRET", client_secret)
             .with_secret_variable("ARM_SUBSCRIPTION_ID", subscription_id)
             .with_secret_variable("ARM_TENANT_ID", tenant_id)
-            # Initialize Terraform and create a plan
             .with_exec(["terraform", "init"])
-            .with_exec(["terraform", "plan"])
+            .with_exec(terraform_command)
         )
-        # Capture and return the Terraform output
         return await container.stdout()
 ```
 
@@ -216,17 +232,32 @@ class PlatformEngineering:
     - The Terraform directory is mounted inside the container at /mnt, ensuring Terraform can access required configuration files.
 
 3. Executing Terraform Securely
-    - The container runs terraform init and terraform plan, authenticating securely with the injected Azure credentials.
+    - The container runs terraform init and terraform plan/apply depending on what function we call. It also authenticates securely with the injected Azure credentials.
 
-Now that we have all this setup, we can run this pipeline locally to make sure it works before pushing to GitHub. Lets see how we can do that!
+Now that we have all this setup, we can run this pipeline locally to make sure it works before pushing to GitHub. Lets see how we can do that by running a Terraform plan and apply.
 
 #### Step 4: Running the Dagger Pipeline Locally 🧑‍💻
 
-To execute our Dagger pipeline locally, we can leverage the Dagger CLI again this time using the call command.
+To execute our Dagger pipeline locally, we can leverage the Dagger CLI again this time using the `call` command. This will call one or more functions, interconnected into a pipeline. In thise case, we are calling our `plan` function defined above in our main.py file. This will run a Terraform plan for us that will echo the changes to be made in our Azure resource group. In this case, a new blob storage account.
 
 ```bash
-dagger call publish --source=. --client-id="ARM_CLIENT_ID" --client-secret="ARM_CLIENT_SECRET" --subscription-id="ARM_SUBSCRIPTION_ID" --tenant-id="ARM_TENANT_ID"
+dagger call plan --source=. --client-id="ARM_CLIENT_ID" --client-secret="ARM_CLIENT_SECRET" --subscription-id="ARM_SUBSCRIPTION_ID" --tenant-id="ARM_TENANT_ID"
 ```
+
+You will note we are passing through a few command line arguments being used here:
+
+- source: source directory used by the installed sdk. In our case, we are asking Dagger to initialize in the ./terraform_dagger_pipeine directory
+- env vars: all of the required environment variables to enable Terraform to connect to Azure
+
+The output of that command will be similar to the below:
+
+![Terraform Plan Output](docs/dagger/assets/dagger_call_plan_local.png)
+
+The output of the plan is looking good, but instead of running the apply locally, lets get our existing functionality into GitHub actions and run our pipeline there!
+
+#### Step 5: Running our Dagger Pipeline in GitHub Actions 🐙
+
+---
 
 ## 🎉 Conclusion
 
