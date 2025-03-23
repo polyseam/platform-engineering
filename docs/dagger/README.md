@@ -253,9 +253,50 @@ The output of that command will be similar to the below:
 
 ![Terraform Plan Output](assets/dagger_call_plan_local.png)
 
-The output of the plan is looking good, but instead of running the apply locally, lets get our existing functionality into GitHub actions and run our pipeline there!
+The output of the plan is looking good and has all the changes I would expect based on our Terraform file. Instead of running the apply locally, lets get our existing functionality into GitHub actions and run our pipeline there!
 
 #### Step 5: Running our Dagger Pipeline in GitHub Actions 🐙
+
+Now that we have successfully executed our Dagger pipeline locally, it's time to automate it in a CI/CD environment. This will ensure that our Terraform deployments are consistently executed whenever code is pushed to our repository.
+
+We will use GitHub Actions to automate the execution of our Dagger pipeline. Below is a sample workflow file that runs Terraform inside our Dagger container whenever changes are pushed to the repository (the location of this file is .github\workflows\dagger.yml).
+
+```yaml
+name: dagger
+on:
+  push:
+    branches: [feature/dagger-for-cicd-pipelines]
+
+jobs:
+  build-publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Deploy Terraform via Dagger
+        uses: dagger/dagger-for-github@8.0.0
+        with:
+          workdir: docs/dagger
+          version: "latest"
+          verb: call
+          call: > 
+            plan --source=. 
+            --client-id="${{ secrets.ARM_CLIENT_ID }}" 
+            --client-secret="${{ secrets.ARM_CLIENT_SECRET }}" 
+            --subscription-id="${{ secrets.ARM_SUBSCRIPTION_ID }}" 
+            --tenant-id="${{ secrets.ARM_TENANT_ID }}"
+```
+
+#### 🎯 Final Outcome
+
+✅ Every push to `main` will trigger a Terraform plan.
+✅ Changes to infrastructure are reviewed before applying.
+✅ The main branch automatically provisions infrastructure using Terraform.
+
+By integrating our Dagger pipeline into GitHub Actions, we ensure that our Terraform deployment process is efficient, repeatable, and secure! 🎉
 
 ---
 
