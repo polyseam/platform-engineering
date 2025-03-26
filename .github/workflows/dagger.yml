@@ -4,7 +4,7 @@ on:
     branches: [feature/dagger-for-cicd-pipelines]
 
 jobs:
-  build:
+  dagger-plan:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -15,5 +15,15 @@ jobs:
           curl -fsSL https://dl.dagger.io/dagger/install.sh | BIN_DIR=$HOME/.local/bin sh
           echo "$HOME/.local/bin" >> $GITHUB_PATH
 
-      - name: Verify Dagger installation
-        run: dagger version
+      - name: Run Dagger plan
+        working-directory: docs/dagger
+        env:
+          ARM_CLIENT_ID: ${{ secrets.DAGGER_ARM_CLIENT_ID }}
+          ARM_CLIENT_SECRET: ${{ secrets.DAGGER_ARM_CLIENT_SECRET }}
+          ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
+          ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
+        run: dagger call plan --source=. \
+          --client-id="$ARM_CLIENT_ID" \
+          --client-secret="$ARM_CLIENT_SECRET" \
+          --subscription-id="$ARM_SUBSCRIPTION_ID" \
+          --tenant-id="$ARM_TENANT_ID"
