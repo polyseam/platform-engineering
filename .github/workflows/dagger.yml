@@ -24,7 +24,7 @@ jobs:
         working-directory: docs/dagger
         run: |
           dagger call plan --source=. \
-            --client-id=secret:ARM_CLIENT_ID \
-            --client-secret=secret:ARM_CLIENT_SECRET \
-            --subscription-id=secret:ARM_SUBSCRIPTION_ID \
-            --tenant-id=secret:ARM_TENANT_ID
+            --client-id=ARM_CLIENT_ID \
+            --client-secret=ARM_CLIENT_SECRET \
+            --subscription-id=ARM_SUBSCRIPTION_ID \
+            --tenant-id=ARM_TENANT_ID
