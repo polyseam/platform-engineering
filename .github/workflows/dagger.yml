@@ -22,8 +22,4 @@ jobs:
           ARM_CLIENT_SECRET: ${{ secrets.DAGGER_ARM_CLIENT_SECRET }}
           ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
           ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
-        run: dagger call plan --source=. \
-          --client-id="$ARM_CLIENT_ID" \
-          --client-secret="$ARM_CLIENT_SECRET" \
-          --subscription-id="$ARM_SUBSCRIPTION_ID" \
-          --tenant-id="$ARM_TENANT_ID"
+        run: dagger call plan --source=. --client-id="$ARM_CLIENT_ID" --client-secret="$ARM_CLIENT_SECRET" --subscription-id="$ARM_SUBSCRIPTION_ID" --tenant-id="$ARM_TENANT_ID"
