@@ -20,7 +20,7 @@ jobs:
           verb: call
           call: > 
             plan --source=. 
-            --client-id="${{ secrets.DAGGER_ARM_CLIENT_ID }}" 
-            --client-secret="${{ secrets.DAGGER_ARM_CLIENT_SECRET }}" 
-            --subscription-id="${{ secrets.ARM_SUBSCRIPTION_ID }}" 
-            --tenant-id="${{ secrets.ARM_TENANT_ID }}"
+            --client-id=${{ secrets.DAGGER_ARM_CLIENT_ID }} 
+            --client-secret=${{ secrets.DAGGER_ARM_CLIENT_SECRET }}
+            --subscription-id=${{ secrets.ARM_SUBSCRIPTION_ID }}
+            --tenant-id=${{ secrets.ARM_TENANT_ID }}
