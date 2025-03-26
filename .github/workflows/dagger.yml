@@ -4,28 +4,16 @@ on:
     branches: [feature/dagger-for-cicd-pipelines]
 
 jobs:
-  terraform-plan:
+  build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
-    env:
-      ARM_CLIENT_ID: ${{ secrets.DAGGER_ARM_CLIENT_ID }}
-      ARM_CLIENT_SECRET: ${{ secrets.DAGGER_ARM_CLIENT_SECRET }}
-      ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
-      ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
-      - name: Run Terraform Plan Using Dagger
-        uses: dagger/dagger-for-github@8.0.0
-        with:
-          workdir: docs/dagger
-          version: "latest"
-          verb: call
-          call: > 
-            plan --source=. 
-            --client-id=${{ secrets.DAGGER_ARM_CLIENT_ID }} 
-            --client-secret=${{ secrets.DAGGER_ARM_CLIENT_SECRET }}
-            --subscription-id=${{ secrets.ARM_SUBSCRIPTION_ID }}
-            --tenant-id=${{ secrets.ARM_TENANT_ID }}
+
+      - name: Install Dagger CLI
+        run: |
+          curl -fsSL https://dl.dagger.io/dagger/install.sh | BIN_DIR=$HOME/.local/bin sh
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
+
+      - name: Verify Dagger installation
+        run: dagger version
