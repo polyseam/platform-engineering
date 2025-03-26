@@ -12,10 +12,21 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Set Environment Variables
+        run: |
+          echo "ARM_CLIENT_ID=${{ secrets.DAGGER_ARM_CLIENT_ID }}" >> $GITHUB_ENV
+          echo "ARM_CLIENT_SECRET=${{ secrets.DAGGER_ARM_CLIENT_SECRET }}" >> $GITHUB_ENV
+          echo "ARM_SUBSCRIPTION_ID=${{ secrets.ARM_SUBSCRIPTION_ID }}" >> $GITHUB_ENV
+          echo "ARM_TENANT_ID=${{ secrets.ARM_TENANT_ID }}" >> $GITHUB_ENV
       - name: Run Terraform Plan Using Dagger
         uses: dagger/dagger-for-github@8.0.0
         with:
           workdir: docs/dagger
           version: "latest"
           verb: call
-          call: plan --source=. --client-id=${{ secrets.DAGGER_ARM_CLIENT_ID }} --client-secret=${{ secrets.DAGGER_ARM_CLIENT_SECRET }} --subscription-id=${{ secrets.ARM_SUBSCRIPTION_ID }} --tenant-id=${{ secrets.ARM_TENANT_ID }}
+          call: > 
+            plan --source=. 
+            --client-id=${{ secrets.DAGGER_ARM_CLIENT_ID }} 
+            --client-secret=${{ secrets.DAGGER_ARM_CLIENT_SECRET }}
+            --subscription-id=${{ secrets.ARM_SUBSCRIPTION_ID }}
+            --tenant-id=${{ secrets.ARM_TENANT_ID }}
