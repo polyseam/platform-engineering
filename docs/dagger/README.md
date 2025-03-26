@@ -268,7 +268,7 @@ on:
     branches: [feature/dagger-for-cicd-pipelines]
 
 jobs:
-  build-publish:
+  terraform-plan:
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -276,7 +276,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Deploy Terraform via Dagger
+      - name: Run Terraform Plan Using Dagger
         uses: dagger/dagger-for-github@8.0.0
         with:
           workdir: docs/dagger
@@ -288,7 +288,29 @@ jobs:
             --client-secret="${{ secrets.ARM_CLIENT_SECRET }}" 
             --subscription-id="${{ secrets.ARM_SUBSCRIPTION_ID }}" 
             --tenant-id="${{ secrets.ARM_TENANT_ID }}"
+  terraform-apply:
+      needs: terraform-plan
+      runs-on: ubuntu-latest
+      environment: prod
+      permissions:
+        contents: read
+        packages: write
+      steps:
+      - name: Run Terraform Apply Using Dagger
+        uses: dagger/dagger-for-github@8.0.0
+        with:
+          workdir: docs/dagger
+          version: "latest"
+          verb: call
+          call: > 
+            apply --source=. 
+            --client-id="${{ secrets.ARM_CLIENT_ID }}" 
+            --client-secret="${{ secrets.ARM_CLIENT_SECRET }}" 
+            --subscription-id="${{ secrets.ARM_SUBSCRIPTION_ID }}" 
+            --tenant-id="${{ secrets.ARM_TENANT_ID }}"
 ```
+
+This workflow ensures that infrastructure changes are reviewed before they are applied. The `terraform-plan` job runs first and must be approved before executing the `terraform-apply` job. The `terraform-apply` step uses a protected environment (`prod`) to ensure deployments follow a controlled process.
 
 #### 🎯 Final Outcome
 
