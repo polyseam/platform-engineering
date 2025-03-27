@@ -30,6 +30,7 @@ jobs:
             --tenant-id=ARM_TENANT_ID
   dagger-apply:
     runs-on: ubuntu-latest
+    needs: [dagger-plan]
     environment: dagger_prod
     env:
       ARM_CLIENT_ID: ${{ secrets.DAGGER_ARM_CLIENT_ID }}
