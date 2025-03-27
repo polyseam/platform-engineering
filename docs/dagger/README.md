@@ -251,11 +251,12 @@ class PlatformEngineering:
 
 - The pipeline runs Terraform **inside a containerized environment** using the official `hashicorp/terraform:1.11` Docker image.  
 - It performs the following steps:  
-- Initializes Terraform with `terraform init`  
-- Runs either `terraform plan` (for previewing changes) or `terraform apply` (to make changes live)  
-- For `apply`, we add the `-auto-approve` flag to **automate the process**  
 
-By using **Dagger**, we ensure that Terraform runs **consistently across different environments**, whether on a local machine or in a CI/CD system. 
+  - Initializes Terraform with `terraform init`
+  - Runs either `terraform plan` (for previewing changes) or `terraform apply` (to make changes live)
+  - For `apply`, we add the `-auto-approve` flag to **automate the process**  
+
+By using **Dagger**, we ensure that Terraform runs **consistently across different environments**, whether on a local machine or in a CI/CD system.
 
 Now, let’s test it locally before pushing it to GitHub! 🚀
 
