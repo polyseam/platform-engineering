@@ -146,7 +146,9 @@ As for the challenge around 'How will we provide Dagger the ability to run Terra
 Since Dagger executes workflows in containers, we don’t need to install Terraform on our local machine or the CI/CD runner. Instead, we use the official hashicorp/terraform container image to ensure a consistent runtime environment. This approach provides several benefits:
 
 ✅ Eliminates Local Setup Hassles – No need to install or manage Terraform versions manually.
+
 ✅ Ensures Environment Consistency – The same Terraform version runs in development and CI/CD.
+
 ✅ Enhances Security – The container isolates Terraform execution, reducing the risk of dependency conflicts.
 
 By leveraging Dagger’s containerized execution, we can run Terraform commands (init, plan, apply) inside a predefined, reproducible environment. This makes our pipeline more portable, repeatable, and platform-agnostic. 🚀
