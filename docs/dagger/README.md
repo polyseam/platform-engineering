@@ -1,8 +1,8 @@
 # 🚀 Using Dagger for Reusable, Portable CI/CD Pipelines
 
-Welcome to the documentation on [Dagger](https://docs.dagger.io/), an **open-source runtime for composable workflows**. But what does that mean exactly? Dagger is very intriguing if you think about the current developer workflow for CI/CD pipelines. Using something like GitHub Actions, we need to define a YAML template (and we all know how much developers love YAML 😉) and push it as many times as it takes to get a initial CI/CD pipeline working.
+Welcome to the documentation on [Dagger](https://docs.dagger.io/), an **open-source runtime for composable workflows**. But what does that mean exactly? Dagger is very intriguing if you think about the current developer workflow for CI/CD pipelines. Using something like GitHub Actions, we need to define a YAML template (and we all know how much developers love YAML 😉) and push it as many times to source control as it takes to get a initial CI/CD pipeline working.
 
-There are many factors that play into why this is challenging. To name one, the workflow agent (ie: the compute running the pipeline) where the CI/CD pipeline will run is very likely not the same as the environment you develop in, leading to ‘dependency hell’. Debugging is painful since you often have to test by pushing your code, waiting for it to run, and then troubleshooting errors from logs. This slow feedback loop makes iteration cumbersome. Additionally, declarative pipeline definitions, while powerful, can be limiting when handling complex logic, and there’s often no straightforward way to test them locally before deployment.
+There are many factors that play into why this is challenging. To name one, the workflow agent (ie: the compute running the pipeline) where the CI/CD pipeline will run is very likely not the same as the environment you develop in, leading to ‘dependency hell’. Debugging is painful since you often have to test by pushing your code, waiting for it to run, and then troubleshooting errors from logs, making more changes, waiting again for the pipeline to run and the cycle repeats itself. This slow feedback loop makes iterations cumbersome. Additionally, declarative pipeline definitions, while powerful, can be limiting when handling complex logic, and there’s often no straightforward way to test them locally before deployment.
 
 This is where Dagger comes in to save the day 🦸. In Dagger, CI/CD pipelines are containerized, making them incredibly portable. They run the same way locally as they do in the cloud, eliminating environmental inconsistencies. By enabling developers to run pipelines locally before committing changes, Dagger provides immediate feedback, significantly reducing the time spent debugging and improving development efficiency.
 
@@ -13,11 +13,14 @@ From the creators of Docker, let’s have a look at how Dagger works in practice
 As mentioned above, Dagger is an **open-source runtime for composable workflows**, designed to create **repeatable, modular, observable, and cross-platform CI/CD pipelines**. By defining CI/CD workflows as code, Dagger enables:
 
 ✅ **Reusable Workflows** – Define once, use anywhere across projects and teams.
+
 ✅ **Portable Execution** – Run workflows **locally, in any CI system, or in the cloud** without modifications.
+
 ✅ **Optimized Performance** – Leverage **automatic artifact caching** for efficient execution.
+
 ✅ **Built-in Observability** – Gain real-time insights via **logs, tracing, and metrics**.
 
-Since Dagger leverages containers, what runs locally is will be the same as what runs in the cloud (ie: GitHub Actions). This solves a huge challenge for developers making the writing, testing, and deployment of CI/CD pipelines much easier. Dagger is also platform agnostic allowing you to switch platforms as needed, avoiding CI lock-in
+Since Dagger leverages containers, what runs locally will be the same as what runs in the cloud (ie: GitHub Actions). This solves a huge challenge for developers and makes the writing, testing, and deployment of CI/CD pipelines much easier. Dagger is also platform agnostic allowing you to switch platforms as needed, avoiding CI lock-in.
 
 ---
 
@@ -328,7 +331,7 @@ jobs:
             --tenant-id=ARM_TENANT_ID
 ```
 
-This workflow ensures that infrastructure changes are reviewed before they are applied. The `terraform-plan` job runs first and must be approved before executing the `terraform-apply` job. The `terraform-apply` step uses a protected environment (`prod`) to ensure deployments follow a controlled process.
+This workflow ensures that infrastructure changes are reviewed before they are applied. The `dagger-plan` job runs first and must be approved before executing the `dagger-apply` job. The `dagger-apply` step uses a protected environment (`dagger_prod`) to ensure deployments follow a controlled process.
 
 #### 🎯 Final Outcome
 
@@ -345,8 +348,11 @@ By integrating our Dagger pipeline into GitHub Actions, we ensure that our Terra
 Dagger provides an innovative way to write, manage, and execute CI/CD pipelines as code. By leveraging its graph-based execution model, containerized steps, and multi-platform support, platform engineers can:
 
 🚀 Build reusable and scalable pipelines
-🌎 Run workflows anywhere (local/cloud/CI systems)
-🔄 Ensure consistency across deployments
-🛠️ Easily integrate Terraform, OpenTofu, or Pulumi
 
-With Dagger, your CI/CD logic stays the same, whether you’re deploying locally or on a cloud platform. Happy building! 🏗️🚀
+🌎 Run workflows anywhere (local/cloud/CI systems)
+
+🔄 Ensure consistency across deployments
+
+Whether you're streamlining local development or scaling cloud deployments, Dagger provides the control and efficiency needed to accelerate software delivery.
+
+Give it a try and take your pipelines to the next level! 🚀
