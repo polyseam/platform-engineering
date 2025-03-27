@@ -1,6 +1,7 @@
 name: dagger  # Name of the workflow
 
-on: workflow_dispatch
+on: 
+  workflow_dispatch
 
 jobs:
   dagger-plan:
