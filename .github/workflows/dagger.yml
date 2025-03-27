@@ -28,3 +28,28 @@ jobs:
             --client-secret=ARM_CLIENT_SECRET \
             --subscription-id=ARM_SUBSCRIPTION_ID \
             --tenant-id=ARM_TENANT_ID
+  dagger-apply:
+    runs-on: ubuntu-latest
+    environment: dagger_prod
+    env:
+      ARM_CLIENT_ID: ${{ secrets.DAGGER_ARM_CLIENT_ID }}
+      ARM_CLIENT_SECRET: ${{ secrets.DAGGER_ARM_CLIENT_SECRET }}
+      ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
+      ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Dagger CLI
+        run: |
+          curl -fsSL https://dl.dagger.io/dagger/install.sh | BIN_DIR=$HOME/.local/bin sh
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
+
+      - name: Run Dagger plan
+        working-directory: docs/dagger
+        run: |
+          dagger call apply --source=. \
+            --client-id=ARM_CLIENT_ID \
+            --client-secret=ARM_CLIENT_SECRET \
+            --subscription-id=ARM_SUBSCRIPTION_ID \
+            --tenant-id=ARM_TENANT_ID
