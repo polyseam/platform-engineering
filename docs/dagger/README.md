@@ -262,52 +262,70 @@ Now that we have successfully executed our Dagger pipeline locally, it's time to
 We will use GitHub Actions to automate the execution of our Dagger pipeline. Below is a sample workflow file that runs Terraform inside our Dagger container whenever changes are pushed to the repository (the location of this file is .github\workflows\dagger.yml).
 
 ```yaml
-name: dagger
+name: dagger  # Name of the workflow
+
 on:
   push:
-    branches: [feature/dagger-for-cicd-pipelines]
+    branches: [feature/dagger-for-cicd-pipelines]  # Trigger workflow on pushes to this branch
 
 jobs:
-  terraform-plan:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
+  dagger-plan:
+    runs-on: ubuntu-latest  # Define the runner environment
+
+    env:
+      # Set Azure authentication secrets as environment variables
+      ARM_CLIENT_ID: ${{ secrets.DAGGER_ARM_CLIENT_ID }}
+      ARM_CLIENT_SECRET: ${{ secrets.DAGGER_ARM_CLIENT_SECRET }}
+      ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
+      ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
+
     steps:
-      - name: Checkout
+      - name: Checkout repository  # Fetch the repository code
         uses: actions/checkout@v4
-      - name: Run Terraform Plan Using Dagger
-        uses: dagger/dagger-for-github@8.0.0
-        with:
-          workdir: docs/dagger
-          version: "latest"
-          verb: call
-          call: > 
-            plan --source=. 
-            --client-id="${{ secrets.ARM_CLIENT_ID }}" 
-            --client-secret="${{ secrets.ARM_CLIENT_SECRET }}" 
-            --subscription-id="${{ secrets.ARM_SUBSCRIPTION_ID }}" 
-            --tenant-id="${{ secrets.ARM_TENANT_ID }}"
-  terraform-apply:
-      needs: terraform-plan
-      runs-on: ubuntu-latest
-      environment: prod
-      permissions:
-        contents: read
-        packages: write
-      steps:
-      - name: Run Terraform Apply Using Dagger
-        uses: dagger/dagger-for-github@8.0.0
-        with:
-          workdir: docs/dagger
-          version: "latest"
-          verb: call
-          call: > 
-            apply --source=. 
-            --client-id="${{ secrets.ARM_CLIENT_ID }}" 
-            --client-secret="${{ secrets.ARM_CLIENT_SECRET }}" 
-            --subscription-id="${{ secrets.ARM_SUBSCRIPTION_ID }}" 
-            --tenant-id="${{ secrets.ARM_TENANT_ID }}"
+
+      - name: Install Dagger CLI  # Download and install the Dagger CLI
+        run: |
+          curl -fsSL https://dl.dagger.io/dagger/install.sh | BIN_DIR=$HOME/.local/bin sh
+          echo "$HOME/.local/bin" >> $GITHUB_PATH  # Add Dagger to the system PATH
+
+      - name: Run Dagger plan  # Execute the Dagger plan command
+        working-directory: docs/dagger
+        run: |
+          dagger call plan --source=. \
+            --client-id=ARM_CLIENT_ID \
+            --client-secret=ARM_CLIENT_SECRET \
+            --subscription-id=ARM_SUBSCRIPTION_ID \
+            --tenant-id=ARM_TENANT_ID
+
+  dagger-apply:
+    runs-on: ubuntu-latest  # Define the runner environment
+    needs: [dagger-plan]  # Ensure 'dagger-plan' job completes before running this job
+    environment: dagger_prod  # Use the 'dagger_prod' environment
+
+    env:
+      # Set Azure authentication secrets as environment variables
+      ARM_CLIENT_ID: ${{ secrets.DAGGER_ARM_CLIENT_ID }}
+      ARM_CLIENT_SECRET: ${{ secrets.DAGGER_ARM_CLIENT_SECRET }}
+      ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
+      ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
+
+    steps:
+      - name: Checkout repository  # Fetch the repository code
+        uses: actions/checkout@v4
+
+      - name: Install Dagger CLI  # Download and install the Dagger CLI
+        run: |
+          curl -fsSL https://dl.dagger.io/dagger/install.sh | BIN_DIR=$HOME/.local/bin sh
+          echo "$HOME/.local/bin" >> $GITHUB_PATH  # Add Dagger to the system PATH
+
+      - name: Run Dagger apply  # Execute the Dagger apply command
+        working-directory: docs/dagger
+        run: |
+          dagger call apply --source=. \
+            --client-id=ARM_CLIENT_ID \
+            --client-secret=ARM_CLIENT_SECRET \
+            --subscription-id=ARM_SUBSCRIPTION_ID \
+            --tenant-id=ARM_TENANT_ID
 ```
 
 This workflow ensures that infrastructure changes are reviewed before they are applied. The `terraform-plan` job runs first and must be approved before executing the `terraform-apply` job. The `terraform-apply` step uses a protected environment (`prod`) to ensure deployments follow a controlled process.
