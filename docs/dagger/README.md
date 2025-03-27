@@ -43,7 +43,9 @@ In the below example, we will create a Dagger pipeline that will deploy some Ter
 ### 🎯 Expected Outcome
 
 ✅ Terraform initializes and validates the configuration.
+
 ✅ Infrastructure is provisioned automatically.
+
 ✅ The same pipeline can be executed locally or in CI/CD environments without modification.
 
 ### 🔨 Implementation
