@@ -130,7 +130,14 @@ Dagger supports the use of confidential information, such as passwords, API keys
 - Read secrets from files on the host system.
 - Fetch secrets dynamically from external providers like 1Password and Vault.
 
-For our use case, we will store Azure authentication credentials (client_id, client_secret, subscription_id, tenant_id) as Dagger Secrets and inject them securely into our Terraform container. In the repo you will notice a .env.sample file (located at: docs\dagger\terraform_dagger_pipeine\src\platform_engineering\.env.sample) that can be filled out with your service principal client_id and client_secret, along with your tenant_id and subscription_id. Simply make a copy of that file and call it .env.
+For our use case, we will store Azure authentication credentials (client_id, client_secret, subscription_id, tenant_id) as Dagger secrets and inject them securely into our Terraform container. For local testing, you can set environment variables in your terminal. For example, in PowerShell, you can set the necessary environment varibales to execute Terraform like so:
+
+```powershell
+$ENV:ARM_TENANT_ID = "your_tenant_id"                        
+$ENV:ARM_CLIENT_ID = "your_client_id"
+$ENV:ARM_CLIENT_SECRET = "your_client_secret"                          
+$ENV:ARM_SUBSCRIPTION_ID = "your_subscription_id"  
+```
 
 **Running Terraform with Dagger’s Containerized Approach** 🏗️
 
