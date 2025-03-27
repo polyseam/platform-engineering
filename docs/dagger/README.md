@@ -82,7 +82,7 @@ provider "azurerm" {
 }
 
 resource "azurerm_storage_account" "example" {
-  name                     = "daggertestingsa"
+  name                     = "daggertestingsa123"
   resource_group_name      = "dagger"
   location                 = "West US"
   account_tier             = "Standard"
