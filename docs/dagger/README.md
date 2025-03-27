@@ -234,19 +234,30 @@ class PlatformEngineering:
         return await container.stdout()
 ```
 
-**How This Works** 🔍
+**How This Works** 🔍  
 
-1. Injecting Secrets
-    - We replace plain environment variables with dagger.Secret, ensuring that Azure credentials are never exposed in logs or outputs.
-    - Secrets are passed as arguments to both the publish and run_terraform functions.
+1️⃣ **Securely Injecting Secrets** 🔑
 
-2. Mounting the Terraform Directory
-    - The Terraform directory is mounted inside the container at /mnt, ensuring Terraform can access required configuration files.
+- Instead of using plain environment variables, we pass Azure credentials as **Dagger secrets** (`dagger.Secret`).  
+- This ensures that sensitive values (Client ID, Secret, Subscription ID, Tenant ID) are **never exposed in logs** or outputs.  
+- The secrets are securely injected into the container as environment variables when running Terraform.  
 
-3. Executing Terraform Securely
-    - The container runs terraform init and terraform plan/apply depending on what function we call. It also authenticates securely with the injected Azure credentials.
+2️⃣ **Mounting the Terraform Directory** 📂
 
-Now that we have all this setup, we can run this pipeline locally to make sure it works before pushing to GitHub. Lets see how we can do that by running a Terraform plan and apply.
+- The **Terraform configuration files** (stored in `source: dagger.Directory`) are mounted inside the container at `/mnt`.  
+- This allows Terraform to **access all necessary files** while keeping everything **isolated and reproducible**.  
+
+3️⃣ **Executing Terraform Inside a Container** 🚀
+
+- The pipeline runs Terraform **inside a containerized environment** using the official `hashicorp/terraform:1.11` Docker image.  
+- It performs the following steps:  
+- Initializes Terraform with `terraform init`  
+- Runs either `terraform plan` (for previewing changes) or `terraform apply` (to make changes live)  
+- For `apply`, we add the `-auto-approve` flag to **automate the process**  
+
+By using **Dagger**, we ensure that Terraform runs **consistently across different environments**, whether on a local machine or in a CI/CD system. 
+
+Now, let’s test it locally before pushing it to GitHub! 🚀
 
 #### Step 4: Running the Dagger Pipeline Locally 🧑‍💻
 
