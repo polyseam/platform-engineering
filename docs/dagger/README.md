@@ -151,7 +151,7 @@ Since Dagger executes workflows in containers, we don’t need to install Terraf
 
 ✅ Enhances Security – The container isolates Terraform execution, reducing the risk of dependency conflicts.
 
-By leveraging Dagger’s containerized execution, we can run Terraform commands (init, plan, apply) inside a predefined, reproducible environment. This makes our pipeline more portable, repeatable, and platform-agnostic. 🚀
+By leveraging Dagger’s containerized execution, we can run Terraform commands (`init`, `plan`, `apply`) inside a predefined, reproducible environment. This makes our pipeline more portable, repeatable, and platform-agnostic. 🚀
 
 **Dagger Python Implementation** ⚒️
 
