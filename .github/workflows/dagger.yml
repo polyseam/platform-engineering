@@ -1,8 +1,6 @@
 name: dagger  # Name of the workflow
 
-on:
-  push:
-    branches: [feature/dagger-for-cicd-pipelines]  # Trigger workflow on pushes to this branch
+on: workflow_dispatch
 
 jobs:
   dagger-plan:
