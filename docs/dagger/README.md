@@ -352,7 +352,9 @@ jobs:
             --tenant-id=ARM_TENANT_ID
 ```
 
-This workflow ensures that infrastructure changes are reviewed before they are applied. The `dagger-plan` job runs first and must be approved before executing the `dagger-apply` job. The `dagger-apply` step uses a protected environment (`dagger_prod`) to ensure deployments follow a controlled process.
+This workflow ensures that infrastructure changes are reviewed before they are applied. The `dagger-plan` job runs first and outputs the Terraform plan. Once someone reviews the plan, they can approve the exection of the `dagger-apply` job. The `dagger-apply` step uses a protected environment (`dagger_prod`) to ensure deployments follow a controlled process.
+
+After running the apply, an Azure Blob Storage Account will be deployed to your resource group! 🎉
 
 #### 🎯 Final Outcome
 
@@ -361,6 +363,8 @@ This workflow ensures that infrastructure changes are reviewed before they are a
 ✅ Changes to infrastructure are reviewed before applying.
 
 ✅ The main branch automatically provisions infrastructure using Terraform.
+
+✅ An Azure Blob Storage Account is Deployed.
 
 By integrating our Dagger pipeline into GitHub Actions, we ensure that our Terraform deployment process is efficient, repeatable, and secure! 🎉
 
