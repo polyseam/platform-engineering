@@ -364,7 +364,7 @@ After running the apply, an Azure Blob Storage Account will be deployed to your 
 
 ✅ The main branch automatically provisions infrastructure using Terraform.
 
-✅ An Azure Blob Storage Account is Deployed.
+✅ An Azure Blob Storage Account is deployed.
 
 By integrating our Dagger pipeline into GitHub Actions, we ensure that our Terraform deployment process is efficient, repeatable, and secure! 🎉
 
