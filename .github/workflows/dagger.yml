@@ -1,0 +1,63 @@
+name: dagger  # Name of the workflow
+
+on: 
+  workflow_dispatch
+
+jobs:
+  dagger-plan:
+    runs-on: ubuntu-latest  # Define the runner environment
+
+    env:
+      # Set Azure authentication secrets as environment variables
+      ARM_CLIENT_ID: ${{ secrets.DAGGER_ARM_CLIENT_ID }}
+      ARM_CLIENT_SECRET: ${{ secrets.DAGGER_ARM_CLIENT_SECRET }}
+      ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
+      ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
+
+    steps:
+      - name: Checkout repository  # Fetch the repository code
+        uses: actions/checkout@v4
+
+      - name: Install Dagger CLI  # Download and install the Dagger CLI
+        run: |
+          curl -fsSL https://dl.dagger.io/dagger/install.sh | BIN_DIR=$HOME/.local/bin sh
+          echo "$HOME/.local/bin" >> $GITHUB_PATH  # Add Dagger to the system PATH
+
+      - name: Run Dagger plan  # Execute the Dagger plan command
+        working-directory: docs/dagger
+        run: |
+          dagger call plan --source=. \
+            --client-id=ARM_CLIENT_ID \
+            --client-secret=ARM_CLIENT_SECRET \
+            --subscription-id=ARM_SUBSCRIPTION_ID \
+            --tenant-id=ARM_TENANT_ID
+
+  dagger-apply:
+    runs-on: ubuntu-latest  # Define the runner environment
+    needs: [dagger-plan]  # Ensure 'dagger-plan' job completes before running this job
+    environment: dagger_prod  # Use the 'dagger_prod' environment
+
+    env:
+      # Set Azure authentication secrets as environment variables
+      ARM_CLIENT_ID: ${{ secrets.DAGGER_ARM_CLIENT_ID }}
+      ARM_CLIENT_SECRET: ${{ secrets.DAGGER_ARM_CLIENT_SECRET }}
+      ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
+      ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
+
+    steps:
+      - name: Checkout repository  # Fetch the repository code
+        uses: actions/checkout@v4
+
+      - name: Install Dagger CLI  # Download and install the Dagger CLI
+        run: |
+          curl -fsSL https://dl.dagger.io/dagger/install.sh | BIN_DIR=$HOME/.local/bin sh
+          echo "$HOME/.local/bin" >> $GITHUB_PATH  # Add Dagger to the system PATH
+
+      - name: Run Dagger apply  # Execute the Dagger apply command
+        working-directory: docs/dagger
+        run: |
+          dagger call apply --source=. \
+            --client-id=ARM_CLIENT_ID \
+            --client-secret=ARM_CLIENT_SECRET \
+            --subscription-id=ARM_SUBSCRIPTION_ID \
+            --tenant-id=ARM_TENANT_ID
