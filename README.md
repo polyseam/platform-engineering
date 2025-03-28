@@ -1,6 +1,6 @@
 <!-- Centered image at the top of the README -->
 <p align="center">
- <img src="https://github.com/codetocloudinc/artwork/blob/main/examples/images/code_to_cloud_1920_x_1080_desktop.png?raw=true" alt="Code To Cloud Logo" width="80%" height="90%" />
+ <img src="https://github.com/codetocloudinc/artwork/blob/main/examples/images/current/code_to_cloud_1920_x_1080_desktop.png?raw=true" alt="Code To Cloud Logo" width="80%" height="90%" />
 </p>
 
 <!-- Badges for GitHub stars, website, forks, and issues -->
