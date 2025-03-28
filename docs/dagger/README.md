@@ -290,7 +290,7 @@ name: dagger  # Name of the workflow
 
 on:
   push:
-    branches: [feature/dagger-for-cicd-pipelines]  # Trigger workflow on pushes to this branch
+    branches: [main]  # Trigger workflow on pushes to this branch
 
 jobs:
   dagger-plan:
@@ -357,7 +357,9 @@ This workflow ensures that infrastructure changes are reviewed before they are a
 #### 🎯 Final Outcome
 
 ✅ Every push to `main` will trigger a Terraform plan.
+
 ✅ Changes to infrastructure are reviewed before applying.
+
 ✅ The main branch automatically provisions infrastructure using Terraform.
 
 By integrating our Dagger pipeline into GitHub Actions, we ensure that our Terraform deployment process is efficient, repeatable, and secure! 🎉
