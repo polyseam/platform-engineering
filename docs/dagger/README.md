@@ -283,10 +283,10 @@ The output of the plan is looking good and has all the changes I would expect ba
 
 Now that we have successfully executed our Dagger pipeline locally, it's time to automate it in a CI/CD environment. This will ensure that our Terraform deployments are consistently executed whenever code is pushed to our repository.
 
-We will use GitHub Actions to automate the execution of our Dagger pipeline. Below is a sample workflow file that runs Terraform inside our Dagger container whenever changes are pushed to the repository (the location of this file is .github\workflows\dagger.yml).
+We will use GitHub Actions to automate the execution of our Dagger pipeline. Below is a sample workflow file that runs Terraform inside our Dagger container whenever changes are pushed to the repository (the location of this file is .github\workflows\dagger_terraform.yml).
 
 ```yaml
-name: dagger  # Name of the workflow
+name: dagger_terraform  # Name of the workflow
 
 on:
   push:
