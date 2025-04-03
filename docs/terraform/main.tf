@@ -13,7 +13,7 @@ provider "azurerm" {
 }
 
 resource "azurerm_storage_account" "example" {
-  name                     = "davidteststorage"
+  name                     = "davidteststorage1537892"
   resource_group_name      = "david-personal"
   location                 = "West US"
   account_tier             = "Standard"

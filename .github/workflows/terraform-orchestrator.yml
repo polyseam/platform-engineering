@@ -1,0 +1,19 @@
+name: Terraform Orchestration
+
+on: 
+  workflow_dispatch:
+  push:
+    branches:
+      - "feature/terraform-github-action"
+
+jobs:
+  plan:
+    uses: ./.github/workflows/terraform-plan.yml
+    with:
+      working-directory: ./docs/terraform
+
+  apply:
+    needs: plan
+    uses: ./.github/workflows/terraform-apply.yml
+    with:
+      working-directory: ./docs/terraform
