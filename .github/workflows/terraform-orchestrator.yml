@@ -2,9 +2,6 @@ name: Terraform Orchestration
 
 on: 
   workflow_dispatch:
-  push:
-    branches:
-      - "feature/terraform-github-action"
 
 env:
   ARM_CLIENT_ID: ${{ secrets. TERRAFORM_ARM_CLIENT_ID }}
