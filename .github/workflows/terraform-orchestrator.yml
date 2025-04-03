@@ -6,14 +6,23 @@ on:
     branches:
       - "feature/terraform-github-action"
 
+env:
+  # Set Azure authentication secrets as environment variables
+  ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
+  ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
+  ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
+  ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
+
 jobs:
   plan:
     uses: ./.github/workflows/terraform-plan.yml
+    secrets: inherit
     with:
       working-directory: ./docs/terraform
 
   apply:
     needs: plan
     uses: ./.github/workflows/terraform-apply.yml
+    secrets: inherit
     with:
       working-directory: ./docs/terraform
