@@ -8,8 +8,8 @@ terraform {
 }
 
 provider "azurerm" {
-  resource_provider_registrations = "none"
   features {}
+  subscription_id = 20bfbb17-69a6-4c34-a274-35ecff042ad7
 }
 
 resource "azurerm_storage_account" "example" {
