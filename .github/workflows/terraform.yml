@@ -1,0 +1,32 @@
+name: terraform  # Name of the workflow
+
+on:
+  push:
+    branches:
+      - 'feature/terraform-github-actions'
+
+env:
+  # Set Azure authentication secrets as environment variables
+  ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
+  ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
+  ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
+  ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
+
+jobs:
+  terraform-plan:
+    runs-on: ubuntu-latest  # Define the runner environment
+
+    steps:
+      - name: Checkout repository  # Fetch the repository code
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Terraform Init
+        working-directory: ./docs/terraform
+        run: terraform init
+
+      - name: Terraform Plan
+        working-directory: ./docs/terraform
+        run: terraform plan
