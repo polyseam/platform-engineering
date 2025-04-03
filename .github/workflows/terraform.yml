@@ -18,7 +18,7 @@ env:
   ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
 
 jobs:
-  terraform-plan:
+  terraform:
     runs-on: ubuntu-latest  # Define the runner environment
 
     steps:
@@ -35,3 +35,7 @@ jobs:
       - name: Terraform Plan
         working-directory: ./docs/terraform
         run: terraform plan
+
+      - name: Terraform Apply
+        working-directory: ./docs/terraform
+        run: terraform apply -auto-approve
