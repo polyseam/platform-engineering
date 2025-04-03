@@ -8,11 +8,12 @@ terraform {
 }
 
 provider "azurerm" {
+  resource_provider_registrations = "none"
   features {}
 }
 
 resource "azurerm_storage_account" "example" {
-  name                     = "davidteststorage1537892"
+  name                     = "terraformtesting123456"
   resource_group_name      = "david-personal"
   location                 = "West US"
   account_tier             = "Standard"
