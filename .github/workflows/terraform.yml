@@ -1,7 +1,14 @@
 name: terraform  # Name of the workflow
 
 on: 
-  workflow_dispatch
+  push:
+    branches:
+      - "feature/terraform-github-action"
+  pull_request:
+    branches:
+      - "main" 
+    paths:
+      - ".github/workflows/terraform.yml"
 
 env:
   # Set Azure authentication secrets as environment variables
