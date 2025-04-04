@@ -1,0 +1,46 @@
+name: Terraform Orchestration
+
+on: 
+  workflow_dispatch:
+
+env:
+  ARM_CLIENT_ID: ${{ secrets.TERRAFORM_ARM_CLIENT_ID }}
+  ARM_CLIENT_SECRET: ${{ secrets.TERRAFORM_ARM_CLIENT_SECRET }}
+  ARM_SUBSCRIPTION_ID: ${{ secrets.TERRAFORM_ARM_SUBSCRIPTION_ID }}
+  ARM_TENANT_ID: ${{ secrets.TERRAFORM_ARM_TENANT_ID }}
+
+jobs:
+  terraform-plan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Terraform Init
+        working-directory: ./docs/terraform
+        run: terraform init
+
+      - name: Terraform Plan
+        working-directory: ./docs/terraform
+        run: terraform plan
+
+  terraform-apply:
+    needs: terraform-plan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository  # Fetch the repository code
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Terraform Init
+        working-directory: ./docs/terraform
+        run: terraform init
+
+      - name: Terraform Apply
+        working-directory: ./docs/terraform
+        run: terraform apply -auto-approve
