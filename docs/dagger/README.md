@@ -249,7 +249,8 @@ class PlatformEngineering:
 
 3️⃣ **Executing Terraform Inside a Container** 🚀
 
-- The pipeline runs Terraform **inside a containerized environment** using the official `hashicorp/terraform:1.11` Docker image.  
+- The pipeline runs Terraform **inside a containerized environment** using the official `hashicorp/terraform:1.11` Docker image.
+- Dagger exposes a type called `Container` that represents the state of an OCI-compatible (ie: Docker) container. This is passed to the Dagger Engine and is passed to a Dagger Function's code as if it were just another variable.
 - It performs the following steps:  
 
   - Initializes Terraform with `terraform init`

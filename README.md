@@ -53,6 +53,8 @@ Explore our comprehensive index of platform engineering topics and modules to de
 
 - **[Platform Engineering Resources](index.md)**
 
+- **[Dagger Resources](docs/dagger/README.md)**
+
 <!-- Contributing section -->
 ## 🤝 Contributing
 
