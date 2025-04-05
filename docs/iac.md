@@ -125,8 +125,8 @@ Let’s explore some of the top tools out there and help you decide which might 
 
 ## 🧭 Final Thoughts
 
-Infrastructure as Code is no longer a “nice to have”, it’s a **must-have** for modern platform engineering. It brings speed, consistency, and peace of mind 😌 to infrastructure management.
+Infrastructure as Code is a **must-have** for modern platform engineering. It brings speed, consistency, and peace of mind 😌 to infrastructure management.
 
-No matter where you are on your IaC journey, the tools and approaches above are ready to empower you to build better platforms — faster and safer 🚧⚡
+No matter where you are on your IaC journey, the tools and approaches above are ready to empower you to build better platforms, faster and safer 🚧⚡
 
 ---
