@@ -46,7 +46,7 @@ GitHub is a central hub for managing source code and collaboration, and it plays
 
 # 🔗 Dagger Lab
 
-For a hands-on lab experience, explore the **[Dagger README Lab](/docs/dagger/readme.md)**. This lab provides practical examples and scenarios to help you get started with Dagger and understand its capabilities in real-world CI/CD workflows.
+For a hands-on lab experience, explore the **[Dagger README Lab](/docs/dagger/README.md)**. This lab provides practical examples and scenarios to help you get started with Dagger and understand its capabilities in real-world CI/CD workflows.
 
 ## Conclusion
 
