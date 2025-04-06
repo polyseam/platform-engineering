@@ -18,7 +18,7 @@ Think of IaC as treating your infrastructure the same way you treat application 
 
 ### 🧠 Why is IaC Essential for Platform Engineering?
 
-As a platform engineer, you're often responsible for creating scalable, reliable, and repeatable systems that other teams build on. IaC gives you:
+As a platform engineer, you're often responsible for creating scalable, reliable, and repeatable systems that other teams build on. IaC provides a **systematic, scalable**, and **repeatable** approach to managing that foundation.
 
 - 🛠️ **Standardization**: Ensure consistent environments across dev, staging, and prod.
 - 🧪 **Testability**: Validate changes in CI pipelines before applying them.
