@@ -186,7 +186,7 @@ Ready to build your platform masterpiece? Pick your tools and start crafting! �
 
 ---
 
-## 🧭 Final Thoughts
+## 🎉 Final Thoughts
 
 Infrastructure as Code is a **must-have** for modern platform engineering. It brings speed, consistency, and peace of mind 😌 to infrastructure management.
 
