@@ -81,6 +81,8 @@ You write **step-by-step instructions** to build infrastructure.
 
 ## 🛠️ Popular IaC Tools (and When to Use Them)
 
+<img src="images/tools_boxing_match.png" alt="Tools Boxing Match" width="500"/>
+
 Choosing an IaC tool is a bit like building a table: 🪑🔨 
 
 You wouldn’t build a table using just a hammer, right? You need **different tools** for different parts. A saw to cut, a drill to assemble, a level to make sure it’s even.
@@ -92,6 +94,8 @@ Let’s break it down:
 ---
 
 ### 🌍 Terraform
+
+<img src="images/terraform.png" alt="Terraform Logo" width="100"/>
 
 - **Type**: Declarative  
 - **Language**: HCL (HashiCorp Configuration Language)  
@@ -113,6 +117,8 @@ Use Terraform when you want **a reliable, cross-cloud workhorse**. It’s like y
 
 ### 🌱 OpenTofu
 
+<img src="images/open_tofu.jpg" alt="OpenTofu Logo" width="100"/>
+
 - **Type**: Declarative  
 - **Language**: HCL (Terraform-compatible)  
 - **Strengths**: Fully open-source, community-driven, no licensing constraints  
@@ -133,6 +139,8 @@ Think of OpenTofu as your **open-source screwdriver**, simple, familiar, and doe
 
 ### 🧑‍💻 Pulumi
 
+<img src="images/pulumi.png" alt="Pulumi Logo" width="100"/>
+
 - **Type**: Imperative  
 - **Language**: TypeScript, Python, Go, .NET, Java  
 - **Strengths**: Developer-friendly, integrates directly with programming languages, great for complex logic  
@@ -152,6 +160,8 @@ Pulumi is your **smart multi-tool**, think Swiss Army knife 🧠. Ideal when you
 ---
 
 ### 🧱 Bicep
+
+<img src="images/bicep.png" alt="Bicep Logo" width="100"/>
 
 - **Type**: Declarative  
 - **Language**: Bicep (DSL for Azure ARM templates)  
