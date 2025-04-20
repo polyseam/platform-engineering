@@ -44,3 +44,38 @@ class AgentExample:
         )
         
         return await analyze_results.last_reply()
+
+    @function
+    async def comment_on_pr(
+        self,
+        repo: str,  # e.g., "my-org/my-repo"
+        comment_body: str,
+        github_token: dagger.Secret,
+    ) -> str:
+        container = (
+            dag.container()
+            .from_("alpine:latest")
+            .with_secret_variable("GITHUB_TOKEN", github_token)
+            .with_exec(["apk", "add", "--no-cache", "curl", "bash", "git", "openssl"])
+            .with_exec([
+                "sh", "-c",
+                (
+                    "curl -fsSL https://github.com/cli/cli/releases/download/v2.70.0/gh_2.70.0_linux_amd64.tar.gz "
+                    "| tar -xz && mv gh_2.70.0_linux_amd64/bin/gh /usr/local/bin/"
+                )
+            ])
+            # Clone the repo
+            .with_exec(["git", "clone", f"https://github.com/{repo}.git"])
+            # Move into the repo directory and run the commands
+            .with_workdir(repo.split("/")[-1])
+            .with_exec([
+                "sh", "-c",
+                (
+                    "LATEST_PR=$(gh pr list --author \"@me\" --limit 1 --json number --jq '.[0].number') && "
+                    f"gh api repos/{repo}/issues/$LATEST_PR/comments -f body='{comment_body}'"
+                )
+            ])
+        )
+
+        return await container.stdout()
+
