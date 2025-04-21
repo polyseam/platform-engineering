@@ -416,7 +416,11 @@ By integrating our Dagger pipeline into GitHub Actions, we ensure that our Terra
 
 ## 🌍 Real-World Example: Dagger Agents and Terraform
 
-In the below example, we will create a Dagger pipeline that will run a Terraform plan, have an AI agent provide feedback from a security and best practices standpoint, and append that feedback to a PR for review.
+In the below example, we will create a Dagger pipeline that will run a Terraform plan, have an AI agent provide feedback from a security and best practices standpoint, and append that feedback to a PR for review. Agents are difficult to build and even more difficult to productionize. Dagger claims to provide 'a way to build reproducible workflows in any language with custom environments, parallel processing, and seamless chaining'.
+
+This has lots of promise and as we will see in the use case below, could really help platform engineers and developers alike review PR’s much faster if an AI agent could give a summary of potential pitfalls of merging a change into the `master` branch.
+
+Lets explore how Dagger can help build AI agents in a platform engineering context!
 
 ### 🎯 Expected Outcome of 'Dagger Agents and Terraform'
 
@@ -428,7 +432,7 @@ In the below example, we will create a Dagger pipeline that will run a Terraform
 
 ✅ View traces in **Dagger Cloud**.
 
-✅ Faster PR review times.
+✅ Decrease PR review times.
 
 ### 🔨 Implementation of 'Dagger Agents and Terraform'
 
