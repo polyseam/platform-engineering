@@ -852,7 +852,7 @@ Based on your Terraform code, the AI agent’s recommendations are **valid and a
 - **Our code**: No lifecycle management included.
 - ✅ **Valid Suggestion** – helpful for cost optimization and managing storage bloat.
 
-### ✅ Summary
+#### ✅ Summary
 
 Every recommendation made by the AI:
 
