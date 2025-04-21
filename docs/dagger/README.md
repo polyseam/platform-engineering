@@ -699,7 +699,7 @@ $ENV:ARM_SUBSCRIPTION_ID = "your_subscription_id"
 $ENV:GITHUB_SECRET = "git_pat"
 ```
 
-Dagger supports a few [LLM providers](https://docs.dagger.io/configuration/llm) out of the box. I decided to use Azure OpenAI and there is a sample .env file you can fill out if you decide to do the same (ie: docs\dagger\agent-example\.env.sample)
+Dagger supports a few [LLM providers](https://docs.dagger.io/configuration/llm) out of the box. I decided to use Azure OpenAI and there is a sample .env file you can fill out if you decide to do the same (ie: docs\dagger\agent-example\.env.sample). Otherwise, consult with the LLM provider documentation for your LLM of choice.
 
 We also need to open a PR so the AI agent can leave a comment on it:
 
