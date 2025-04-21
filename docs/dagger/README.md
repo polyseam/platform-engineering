@@ -812,7 +812,7 @@ Are these recommendations valid? I think so. Here is a breakdown:
 
 ### ✅ Validation of AI Agent Recommendations
 
-Based on your Terraform code, the AI agent’s recommendations are **valid and appropriate**. Below is a breakdown of each recommendation compared to your configuration.
+Below is a breakdown of each recommendation compared to our Terraform configuration.
 
 #### 🔒 `https_traffic_only_enabled = false`
 
