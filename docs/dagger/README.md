@@ -717,7 +717,7 @@ This will kickoff our Dagger pipeline and we can monitor it in real time in [Dag
 
 Opening that trace reveals some handy logging messages that allow us to drill down into what the agent actually did. Here are a few examples:
 
-- Our prompt from our terraformer.txt file along with the assignment we passed through when we leveraged `dagger call` to invoke our agent.
+- Our prompt from our `terraformer.txt` file along with the assignment we passed through when we leveraged `dagger call` to invoke our agent.
 
 ![Dagger AI Agent Cloud Trace 1](assets/dagger_ai_agent_trace_1.png)
 
