@@ -711,7 +711,7 @@ Let’s now run our Dagger agent locally by leveraging the Dagger CLI and using 
 dagger call terraform-agent --assignment="run terraform init first, followed by a plan. make sure to run the terraform commands in the /mnt folder." --client-id="ARM_CLIENT_ID" --client-secret="ARM_CLIENT_SECRET" --subscription-id="ARM_SUBSCRIPTION_ID" --tenant-id="ARM_TENANT_ID" --directory_arg=. --github_token="GITHUB_SECRET"
 ```
 
-This will kickoff our Dagger pipeline and we can monitor it in real time in **[Dagger Cloud]**(https://v3.dagger.cloud/).
+This will kickoff our Dagger pipeline and we can monitor it in real time in [Dagger Cloud](https://v3.dagger.cloud/).
 
 ![Dagger AI Agent Cloud Trace](assets/dagger_ai_agent_cloud_trace.png)
 
