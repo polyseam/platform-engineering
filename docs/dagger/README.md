@@ -872,7 +872,7 @@ By combining **containers, secure secrets, infrastructure automation**, and **AI
 
 ✅ **Containerized Terraform Execution**: We utilized Dagger to execute Terraform commands in an isolated environment, ensuring reproducibility and security.
 
-✅ **AI-Powered Output Interpretation**: After running the Terraform commands, the agent leveraged an AI model to analyze the plan and generate human-readable feedback, highlighting areas of improvement and potential risks.
+✅ **AI-Powered Output Interpretation**: After running the Terraform commands, the agent leveraged a LLM to analyze the plan and generate human-readable feedback, highlighting areas of improvement and potential risks.
 
 ✅ **Dagger Cloud Integration**: The entire process was monitored in real-time via Dagger Cloud, offering useful logging and troubleshooting insights.
 
