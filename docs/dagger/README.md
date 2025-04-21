@@ -496,7 +496,7 @@ resource "azurerm_storage_container" "public_container" {
 }
 ```
 
-You will notice in the comments we have intentionally added some poor Terraform practices into our code. This is to test the capability of the AI agent and see if it is able to flag them.
+You will notice in the comments we have **intentionally added some poor Terraform practices into our code**. This is to test the capability of the AI agent and see if it is able to flag them.
 
 For example, we have set our container to public access with anonymous read access. This means anyone on the public internet can read the files in that container anonymously 😬.
 
