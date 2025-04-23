@@ -22,5 +22,8 @@ jobs:
 
       - name: Run markdownlint
         run: |
+          echo "Config file contents:"
+          cat .github/workflows/.markdownlint-cli2.jsonc
+          echo "\nRunning markdownlint with config:"
           markdownlint-cli2 --config .github/workflows/.markdownlint-cli2.jsonc --fix '**/*.md'
           markdownlint-cli2 --config .github/workflows/.markdownlint-cli2.jsonc '**/*.md'
