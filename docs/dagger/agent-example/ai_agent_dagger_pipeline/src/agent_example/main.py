@@ -114,7 +114,7 @@ class AgentExample:
         analyze_results = (
             dag.llm()
             .with_env(environment)
-            .with_prompt_file(dag.current_module().source().file("terraformer.txt"))
+            .with_prompt_file(dag.current_module().source().file("terraformer_prompt.txt"))
         )
 
         # Comment the LLM's last reply on a GitHub pull request
