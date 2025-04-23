@@ -20,10 +20,14 @@ jobs:
       - name: Install markdownlint-cli2
         run: npm install -g markdownlint-cli2
 
+      - name: Create config
+        run: |
+          echo '{
+            "default": true,
+            "MD013": false
+          }' > .markdownlint.json
+
       - name: Run markdownlint
         run: |
-          echo "Config file contents:"
-          cat .github/workflows/.markdownlint-cli2.jsonc
-          echo "\nRunning markdownlint with config:"
-          markdownlint-cli2 --config .github/workflows/.markdownlint-cli2.jsonc --fix '**/*.md'
-          markdownlint-cli2 --config .github/workflows/.markdownlint-cli2.jsonc '**/*.md'
+          markdownlint-cli2 --fix '**/*.md'
+          markdownlint-cli2 '**/*.md'
