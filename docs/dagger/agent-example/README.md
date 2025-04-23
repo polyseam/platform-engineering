@@ -448,7 +448,9 @@ Every recommendation made by the AI:
 - Follows Azure and Terraform best practices.
 - Would **improve security, governance, and maintainability**.
 
-### 🎯 Final Outcome
+---
+
+## 🎯 Final Outcome
 
 By combining **containers, secure secrets, infrastructure automation**, and **AI-based review**, this Dagger setup enables a powerful GitOps loop that’s both **secure and intelligent**. Perfect for modern platform engineering and DevSecOps pipelines.
 

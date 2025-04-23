@@ -319,7 +319,9 @@ This workflow ensures that infrastructure changes are reviewed before they are a
 
 After running the apply, an Azure Blob Storage Account will be deployed to your resource group! 🎉
 
-### 🎯 Final Outcome
+---
+
+## 🎯 Final Outcome
 
 ✅ Every push to `main` will trigger a Terraform plan.
 
