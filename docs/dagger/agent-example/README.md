@@ -6,7 +6,7 @@ This has lots of promise and as we will see in the use case below, could really 
 
 Lets explore how Dagger can help build AI agents in a platform engineering context!
 
-## 🎯 Expected Outcome of 'Dagger Agents and Terraform'
+## 🎯 Expected Outcomes
 
 ✅ Terraform initializes and runs a plan.
 
@@ -18,7 +18,7 @@ Lets explore how Dagger can help build AI agents in a platform engineering conte
 
 ✅ Decrease PR review times.
 
-## 🔨 Implementation of 'Dagger Agents and Terraform'
+## 🔨 Implementation
 
 The below steps were taken to leverage Daggers LLM integration capabilities. All the code for the below can be found [here](https://github.com/codetocloudinc/platform-engineering/tree/main/docs/dagger/ai_agent_dagger_pipeline).
 
@@ -287,7 +287,7 @@ Dagger supports a few [LLM providers](https://docs.dagger.io/configuration/llm) 
 
 We also need to open a PR so the AI agent can leave a comment on it:
 
-![Dagger AI Agent Sample PR](assets/dagger_ai_agent_sample_pr.png)
+![Dagger AI Agent Sample PR](../assets/dagger_ai_agent_sample_pr.png)
 
 Let’s now run our Dagger agent locally by leveraging the Dagger CLI and using the `call` command.
 
@@ -297,23 +297,23 @@ dagger call terraform-agent --assignment="run terraform init first, followed by 
 
 This will kickoff our Dagger pipeline and we can monitor it in real time in [Dagger Cloud](https://dagger.cloud/).
 
-![Dagger AI Agent Cloud Trace](assets/dagger_ai_agent_cloud_trace.png)
+![Dagger AI Agent Cloud Trace](../assets/dagger_ai_agent_cloud_trace.png)
 
 Opening that trace reveals some handy logging messages that allow us to drill down into what the agent actually did. Here are a few examples:
 
 - Our prompt from our `terraformer.txt` file along with the assignment we passed through when we leveraged `dagger call` to invoke our agent.
 
-![Dagger AI Agent Cloud Trace 1](assets/dagger_ai_agent_trace_1.png)
+![Dagger AI Agent Cloud Trace 1](../assets/dagger_ai_agent_trace_1.png)
 
 - The tools/actions the AI agent took to complete the assignment.
 
-![Dagger AI Agent Cloud Trace 2](assets/dagger_ai_agent_trace_2.png)
+![Dagger AI Agent Cloud Trace 2](../assets/dagger_ai_agent_trace_2.png)
 
 These traces are really valuable both when you are trying to get an agent do exactly what you need it to and for troubleshooting **when** things go wrong.
 
 Jumping back over to the PR, we can see the agent has created a comment for us with some recommendations for our Terraform.
 
-![Dagger AI Agent PR Comment](assets/dagger_ai_agent_pr_comment.png)
+![Dagger AI Agent PR Comment](../assets/dagger_ai_agent_pr_comment.png)
 
 ### Step 5: Validating the AI Agent Recommendations 🤖✅
 
@@ -448,7 +448,7 @@ Every recommendation made by the AI:
 - Follows Azure and Terraform best practices.
 - Would **improve security, governance, and maintainability**.
 
-### 🎯 Final Outcome of 'Dagger Agents and Terraform'
+### 🎯 Final Outcome
 
 By combining **containers, secure secrets, infrastructure automation**, and **AI-based review**, this Dagger setup enables a powerful GitOps loop that’s both **secure and intelligent**. Perfect for modern platform engineering and DevSecOps pipelines.
 

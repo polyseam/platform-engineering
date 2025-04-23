@@ -2,7 +2,7 @@
 
 In the below example, we will create a Dagger pipeline that will deploy some Terraform code and we will see how useful being able to run CI/CD pipelines locally makes the development process.
 
-## 🎯 Expected Outcome
+## 🎯 Expected Outcomes
 
 ✅ Terraform initializes and validates the configuration.
 
@@ -238,7 +238,7 @@ You will note we are passing through a few command line arguments being used her
 
 The output of that command will be similar to the below:
 
-![Terraform Plan Output](assets/dagger_call_plan_local.png)
+![Terraform Plan Output](../assets/dagger_call_plan_local.png)
 
 The output of the plan is looking good and has all the changes I would expect based on our Terraform file. Instead of running the apply locally, lets get our existing functionality into GitHub actions and run our pipeline there!
 
