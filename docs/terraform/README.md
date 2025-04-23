@@ -1,5 +1,5 @@
 # Continuous Integration / Continuous Deployment (CI/CD) for Infrastructure as Code (IaC)
-The goal of this `README` and accompanying code is to demonstrate how to automate Terraform (IaC tool) using GitHub Actions (CI/CD) to create an Azure Storage Account. 
+The goal of this `README` and accompanying code is demonstrate how to automate Terraform (IaC tool) using GitHub Actions (CI/CD) to create an Azure Storage Account. 
 
 **Note: You could easily modify the Terraform script to deploy infrastructure across any cloud provider. For the purpose of this example, I am using Azure.**
 
