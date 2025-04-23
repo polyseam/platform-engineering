@@ -84,7 +84,7 @@ Please make sure you have the below prerequisites met before running the below e
 - [Dagger CLI](https://docs.dagger.io/ci/quickstart/cli/)
 - [Dagger Cloud Account](https://dagger.io/cloud)
 
-### Examples
+### 🔎 Examples
 
 - [Deploying Terraform with Dagger](https://github.com/codetocloudinc/platform-engineering/tree/main/docs/dagger/terraform-example/README.md)
 
