@@ -22,5 +22,5 @@ jobs:
 
       - name: Run markdownlint
         run: |
-          markdownlint-cli2 --config '{"MD013":false}' --fix '**/*.md'
-          markdownlint-cli2 --config '{"MD013":false}' '**/*.md'
+          markdownlint-cli2 --config .github/.markdownlint-cli2.jsonc --fix '**/*.md'
+          markdownlint-cli2 --config .github/.markdownlint-cli2.jsonc '**/*.md'
