@@ -24,7 +24,7 @@ jobs:
           echo "$HOME/.local/bin" >> $GITHUB_PATH  # Add Dagger to the system PATH
 
       - name: Run Dagger plan  # Execute the Dagger plan command
-        working-directory: docs/dagger
+        working-directory: docs/dagger/terraform-example/
         run: |
           dagger call plan --source=. \
             --client-id=ARM_CLIENT_ID \
@@ -54,7 +54,7 @@ jobs:
           echo "$HOME/.local/bin" >> $GITHUB_PATH  # Add Dagger to the system PATH
 
       - name: Run Dagger apply  # Execute the Dagger apply command
-        working-directory: docs/dagger
+        working-directory: docs/dagger/terraform-example/
         run: |
           dagger call apply --source=. \
             --client-id=ARM_CLIENT_ID \
