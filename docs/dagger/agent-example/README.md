@@ -20,7 +20,7 @@ Lets explore how Dagger can help build AI agents in a platform engineering conte
 
 ## 🔨 Implementation
 
-The below steps were taken to leverage Daggers LLM integration capabilities. All the code for the below can be found [here](https://github.com/codetocloudinc/platform-engineering/tree/main/docs/dagger/ai_agent_dagger_pipeline).
+The below steps were taken to leverage Daggers LLM integration capabilities. All the code for the below can be found [here](https://github.com/codetocloudinc/platform-engineering/tree/main/docs/dagger/agent-example/ai_agent_dagger_pipeline).
 
 Make sure you have the repo cloned and you are in the `docs\dagger\agent-example` directory:
 
