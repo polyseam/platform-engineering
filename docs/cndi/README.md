@@ -115,7 +115,7 @@ flowchart TD
       subgraph Cluster["Kubernetes Cluster"]
         R["Applications and Config"]
         Q --> |creates| P["ArgoCD"]
-        P --> |syncs| R
+        P --> |guarantees| R
         P --> |tracks| C
       end
     end
