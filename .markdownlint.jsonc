@@ -1,0 +1,10 @@
+{
+    "default": true,
+    // There are features in GitHub Flavored Markdown that are driven by HTML tags.
+    // https://github.github.com/gfm/#disallowed-raw-html-extension
+    "no-inline-html": false,
+    "line-length": {
+        // tables should be allowed to be longer than 80 characters for legibility and compatiblity with tools like "prettier"
+        "tables": false
+    }
+}
