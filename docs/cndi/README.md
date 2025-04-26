@@ -224,9 +224,6 @@ Popular templates:
 
 - **DIY IaC + GitOps**: CNDI bundles Terraform, Argo CD, and CI, so you don’t
   start from scratch.
-- **Managed K8s (EKS/GKE/AKS)**: CNDI uses the latest technologies from cloud
-  service providers while providing a unified layer over top of them for a
-  consistent experience.
 - **Crossplane**: A framework to build platforms; CNDI is a ready-to-go platform
   with batteries included.
 - **Kubefirst**: Similar instant GitOps platform installer; CNDI uses a
@@ -240,19 +237,18 @@ Popular templates:
 
 ## Why CNDI Deserves Your Attention
 
-- **🌟 Simplified Platform Engineering** – From zero to a full platform in an
-  afternoon.
+- **🌟 Simplified Platform Engineering** – From zero to a full platform in
+  minutes
 - **🌟 Single Source of Truth** – All infra & apps in one Git repo with full
   auditability.
 - **🌟 Production-Ready Out-of-the-Box** – Secure, monitored, GitOps flow from
   day one.
-- **🌟 Flexibility & Control** – Sensible defaults with easy escape hatch via
-  generated code.
-- **🌟 Community & Knowledge Sharing** – Contribute templates and learn best
+- **🌟 Flexibility & Control** – Sensible defaults and simple customization
+- **🌟 Community & Knowledge Sharing** – Contribute Templates and learn best
   practices.
 - **🌟 Ideal for Small Teams & Startups** – No need for a large platform team to
   get started.
-- **🌟 Future-Proof** – Community-maintained templates ensure alignment with
+- **🌟 Future-Proof** – Community-maintained Templates ensure alignment with
   best practices.
 
 Give CNDI a try – spin up a template in your cloud of choice, and experience how
