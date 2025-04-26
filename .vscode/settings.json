@@ -1,0 +1,12 @@
+{
+    // Show a vertical guide at 80 characters
+    "editor.rulers": [80],
+  
+    // Markdown-only settings
+    "[markdown]": {
+      // Soft-wrap at the `wordWrapColumn` limit, rather than viewport width
+      "editor.wordWrap": "wordWrapColumn",
+      // Wrap (i.e. insert line breaks) at 80 characters
+      "editor.wordWrapColumn": 80
+    }
+  }
