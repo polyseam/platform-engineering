@@ -1,25 +1,33 @@
-# CNDI – Self-Hosted Platform Engineering Made Easy
+# CNDI – Self-Hosted Infrastructure Services in minutes
 
-**CNDI** (Cloud-Native Deployment Infrastructure) is an open-source tool that
-lets you set up full **platform engineering** environments – from infrastructure
-to Kubernetes clusters and applications – with minimal effort. It provides a
-holistic approach to cluster management, encompassing infrastructure
-provisioning, application deployment, GitOps automation, and Day-2 operations.
-In short, CNDI gives you the **ease-of-use of a PaaS** while you retain full
-control of your stack in your own cloud or data center. 🚀
+**CNDI** (Cloud-Native Deployment Infrastructure) is a completely free and
+open-source framework for deploying and managing cloud-native applications on
+Kubernetes in any environment. It provides a holistic approach to cluster
+management, encompassing infrastructure provisioning, application deployment,
+GitOps automation, and Day-2 operations. In short, CNDI gives you the
+**ease-of-use of a PaaS** while you retain full control of your stack in your
+own cloud with no license fees. 🚀
 
-Developers and platform engineers can use CNDI to quickly provision
-**production-ready** Kubernetes clusters _and_ deploy popular services on them
-(like databases, analytics, or CI/CD tools) using a single unified
-configuration. Everything is managed as code in a Git repository for
-auditability and reproducibility. Let’s dive into what CNDI offers.
+Developers can use CNDI to quickly provision **production-ready** Kubernetes
+clusters _and_ deploy popular services on them (like databases, analytics, or
+CI/CD tools) using a single unified configuration. Everything is managed as code
+in a Git repository for auditability and reproducibility. You can even create
+your own custom Templates, turning CNDI into a platform engineering powerhouse.
+
+If you like what you see, please check us out at
+[https://cndi.dev](https://cndi.dev) and
+[github.com/polyseam/cndi](https://github.com/polyseam/cndi)!
+
+Let’s dive into what CNDI has to offer.
 
 ## Overview of CNDI
 
-**What is CNDI?** CNDI stands for **Cloud-Native Deployment Infrastructure** and
-is maintained by the Polyseam team. It’s essentially a CLI tool and framework
-that automates the creation of Kubernetes-based platforms across multiple
-environments. With CNDI you can:
+**What is CNDI?** CNDI stands for **Cloud-Native Deployment Infrastructure**
+
+<!-- Does it? --> and is maintained by the Polyseam team. It automates the
+
+creation of Kubernetes-based platforms all modern environments. With CNDI you
+can automatically:
 
 - **Provision Infrastructure**: Set up cloud resources (VMs, networking, etc.)
   on AWS, GCP, Azure, or even locally, all defined via code.
@@ -70,26 +78,27 @@ behind the scenes.
 
 ## How CNDI Works (Architecture)
 
-### Diagram
+<details>
+  <summary><h3>Diagram</h3></summary>
 
 ```mermaid
 flowchart TD
   subgraph Workflow["CNDI Workflow"]
-   direction TB
-   subgraph Workstation["Dev Machine"]
+    direction TB
+
+    subgraph Workstation["Dev Machine"]
       direction TB
       A["`CNDI CLI<br/> _cndi create_ <br/> or <br/>_cndi ow_`"] -->|generates| D
       A --> |generates| B
 
       B["Framework Files<br/>_cndi_config.yaml_<br/> _.env_<br/>_GitHub Workflows_"]
-      
+
       D["Cluster Artifacts<br/>_Terraform Resources_<br/>+<br/>_Kubernetes manifests_"]
       D --> F["_git push_"]
       B --> F
-      
-   end
+    end
 
-   subgraph GitHub["GitHub"]
+    subgraph GitHub["GitHub"]
       direction TB
       F --> C["Your GitHub Repo"]
       C --> E["On Pull Request<br/>(GitHub Actions)"]
@@ -97,21 +106,23 @@ flowchart TD
       E --> L["Static Analysis<br/>eg. _Checkov_<br/>"]
       K --> M["CNDI Run<br/>_cndi run_"]
       M --> |calls| Q["_terraform apply_"]
-
-   end
+    end
 
    subgraph Cloud["Your Cloud Infrastructure"]
       direction TB
       Q --> N["`Supporting Resources<br/> (eg. VPC, IAM)`"]
+
       subgraph Cluster["Kubernetes Cluster"]
-         R["Applications and Config"]
-         Q --> |creates| P["ArgoCD"]
-         P --> |syncs| R
-         P --> |tracks| C
+        R["Applications and Config"]
+        Q --> |creates| P["ArgoCD"]
+        P --> |syncs| R
+        P --> |tracks| C
       end
-   end
+    end
   end
 ```
+
+</details>
 
 ### Developer Experience
 
