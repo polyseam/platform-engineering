@@ -24,9 +24,8 @@ environments. With CNDI you can:
 - **Provision Infrastructure**: Set up cloud resources (VMs, networking, etc.)
   on AWS, GCP, Azure, or even locally, all defined via code.
 - **Bootstrap a Kubernetes Cluster**: Install a Kubernetes distribution on those
-  resources (e.g. a K3s cluster on your VMs) complete with essential add-ons
-  (ingress, cert-manager, etc.).
-- **Deploy Applications via GitOps**: Integrate Argo CD for GitOps so that your
+  resources complete with essential add-ons (ingress, cert-manager, etc.).
+- **Deploy Applications via GitOps**: Integrate ArgoCD for GitOps so that your
   application manifests (Helm charts, YAMLs) are continuously deployed to the
   cluster from your git repo.
 - **Bake in DevOps Best Practices**: Everything (infra and app configs) lives in
@@ -50,13 +49,14 @@ behind the scenes.
 - **🔧 Full-Stack Templates** – Blueprints for entire stacks (infra + cluster +
   apps) covering Airflow, Kafka, PostgreSQL, WordPress, etc.
 - **📦 Complete Framework** – Infrastructure provisioning, GitOps CI/CD (Argo
-  CD), monitoring, logging – all integrated.
+  CD), monitoring, logging, secrets, ExternalDNS – all integrated.
 - **🔒 Security & Auditability** – Git commits for all changes, secrets managed
   via `.env` and sealed-secrets, cert-manager for TLS.
 - **🚀 Quick Interactive Setup** – CLI prompts guide you through project
   creation, even without deep Terraform/K8s knowledge.
 - **🤖 GitHub Integration** – Auto-create GitHub repo and secrets, includes a
-  GitHub Actions workflow (`cndi-run.yaml`).
+  GitHub Actions workflow for deployments (`cndi-run.yaml`) and one for checks
+  (`cndi_onpull.yaml`).
 - **♻️ Unified Config & One-Click Updates** – Edit `cndi_config.yaml` + run
   `cndi overwrite`, commit & push → everything regenerates.
 - **📜 GitOps by Design** – Argo CD in-cluster watches your repo and
@@ -69,6 +69,8 @@ behind the scenes.
   resources. `cndi destroy` tears everything down when not needed.
 
 ## How CNDI Works (Architecture)
+
+### Diagram
 
 ```mermaid
 flowchart TD
@@ -111,24 +113,28 @@ flowchart TD
   end
 ```
 
+### Developer Experience
+
 1. **Project Creation (Bootstrap)**
    - `cndi create` (interactive) → scaffolds a new Git repo with:
      - `cndi_config.yaml` (main config)
      - `.env` (secrets, not committed)
-     - `cndi/` (generated Terraform & manifests)
+     - `cndi/terraform/*` (generated Terraform)
+     - `cndi/cluster_manifests/*` (generated K8s manifests)
      - `.github/workflows/cndi-run.yaml` (CI workflow)
+     - `.github/workflows/cndi_onpull.yaml` (CI checks workflow)
 
 2. **Overwrite (Generate Code)**
-   - `cndi overwrite` reads your config/env and regenerates Terraform and K8s
-     manifests in `cndi/`.
+   - `cndi overwrite` reads your `cndi_config.yaml` and `.env` and regenerates
+     Terraform and Kubernetes manifests in `cndi/`.
 
 3. **GitOps Pipeline (Provision & Deploy)**
    - Push to GitHub → Actions runs `cndi run` → Terraform applies → cluster &
      infra up → Argo CD in-cluster pulls manifests → deploys apps.
 
 4. **Day-2 Operations**
-   - **Access** via domain/TLS or `kubectl port-forward`
-   - **Monitor** with Grafana & Loki
+   - **Access** via domain/TLS
+   - **Monitor** with Prometheus, Grafana, & Loki
    - **Update** by editing `cndi_config.yaml` → `cndi overwrite` → push →
      automated CI/CD
    - **Customize** by adding extra Terraform or manifests in config
@@ -142,35 +148,12 @@ flowchart TD
 - Cloud credentials (AWS, GCP, Azure) or none for local `dev`
 - (Optional) domain & email for TLS
 
-**Install CNDI CLI:**
-
-<details>
-<summary>Mac/Linux</summary>
-
-```bash
-curl -fsSL https://raw.githubusercontent.com/polyseam/cndi/main/install.sh | sh
-```
-
-</details>
-
-<details>
-<summary>Windows (PowerShell)</summary>
-
-```powershell
-iwr https://raw.githubusercontent.com/polyseam/cndi/main/install.ps1 -UseBasicParsing | iex
-```
-
-</details>
-
-Verify with:
-
-```bash
-cndi --version
-```
+Once you have what you need, install CNDI using the guide from the
+[Project's README.md](https://cndi.run/gh?utm_source=c2cPE).
 
 ## Quick Start Tutorial
 
-Deploy **Airflow** on AWS in minutes:
+Deploy **Airflow** on your cloud in minutes:
 
 1. **Create Project**
    ```bash
@@ -178,25 +161,19 @@ Deploy **Airflow** on AWS in minutes:
    ```
    Follow prompts (cloud provider, region, nodes, domain, email…).
 
-2. **Review & Adjust**\
-   Edit `cndi_config.yaml` (e.g., node count, instance size).
-
-3. **Generate Code**
+2. **Open GitHub Repo**
    ```bash
-   cndi overwrite
-   git add .
-   git commit -m "Initial CNDI config"
-   git push origin main
+   gh repo view my-user/my-airflow-demo --web
    ```
 
-4. **Watch CI**\
+3. **Watch CI**\
    In GitHub Actions, see **CNDI Run** deploy infra and cluster.
 
-5. **Access Airflow**
+4. **Access Airflow**
    - Via domain/TLS if configured
    - Or use `kubectl port-forward`
 
-6. **Next Steps**
+5. **Next Steps**
    - Log into Argo CD (`admin` + password from `.env`)
    - Monitor via Grafana & Loki
    - Scale or add apps by editing config → `cndi overwrite` → push
@@ -204,33 +181,41 @@ Deploy **Airflow** on AWS in minutes:
 
 ## CNDI Templates and Use Cases
 
+CNDI comes with a variety of **pre-built templates** for common use cases. These
+templates are designed to be production-ready and can be easily customized to
+fit your needs. Each template includes a complete stack of infrastructure,
+Kubernetes cluster, and applications, all defined in a single `cndi_config.yaml`
+file. This allows you to quickly spin up a fully functional environment with
+minimal effort, and when you need to make changes, you can do so by simply
+editing that same file and running `cndi overwrite`.
+
 Popular templates:
 
-| Template      | Use Case                        |
-| ------------- | ------------------------------- |
-| Airflow       | Data pipelines & ETL            |
-| Kafka         | Event streaming                 |
-| PostgreSQL    | SQL databases                   |
-| MySQL         | SQL databases                   |
-| MongoDB       | NoSQL database                  |
-| Redis         | Cache / in-memory store         |
-| WordPress     | CMS & web apps                  |
-| Hop           | Visual data integration         |
-| GPU Operator  | GPU workloads / ML              |
-| Functions     | Serverless functions            |
-| Neo4j         | Graph database                  |
-| MS SQL Server | Containerized SQL Server on K8s |
+| Template                                                | Use Case                        |
+| ------------------------------------------------------- | ------------------------------- |
+| [Airflow](https://cndi.dev/templates/airflow)           | Data pipelines & ETL            |
+| [Kafka](https://cndi.dev/templates/kafka)               | Event streaming                 |
+| [PostgreSQL](https://cndi.dev/templates/postgres)       | SQL databases                   |
+| [MySQL](https://cndi.dev/templates/mysql)               | SQL databases                   |
+| [MongoDB](https://cndi.dev/templates/mongodb)           | NoSQL database                  |
+| [Redis](https://cndi.dev/templates/redis)               | Cache / in-memory store         |
+| [WordPress](https://cndi.dev/templates/wordpress)       | CMS & web apps                  |
+| [Hop](https://cndi.dev/templates/hop)                   | Visual data integration         |
+| [GPU Operator](https://cndi.dev/templates/gpu-operator) | GPU workloads / ML              |
+| [Functions](https://cndi.dev/templates/fns)             | Serverless functions            |
+| [Neo4j](https://cndi.dev/templates/neo4j)               | Graph database                  |
+| [MS SQL Server](https://cndi.dev/templates/mssqlserver) | Containerized SQL Server on K8s |
 
-- **Combine templates** in one `cndi_config.yaml` to deploy multiple stacks side
-  by side.
-- **Custom templates** are easy to create and share with the community.
+- Don't forget **Custom Templates** are easy to create and share with the
+  community!
 
 ## Comparison to Other Tools
 
 - **DIY IaC + GitOps**: CNDI bundles Terraform, Argo CD, and CI, so you don’t
   start from scratch.
-- **Managed K8s (EKS/GKE/AKS)**: CNDI uses self-managed clusters for cost and
-  consistency across clouds.
+- **Managed K8s (EKS/GKE/AKS)**: CNDI uses the latest technologies from cloud
+  service providers while providing a unified layer over top of them for a
+  consistent experience.
 - **Crossplane**: A framework to build platforms; CNDI is a ready-to-go platform
   with batteries included.
 - **Kubefirst**: Similar instant GitOps platform installer; CNDI uses a
@@ -268,10 +253,18 @@ quickly you can go from code to cloud. Happy self-hosting! 🚀
 
 - **Official Site**: https://cndi.dev
 - **GitHub Repo**: https://github.com/polyseam/cndi
-- **Discord Community**: (Link on the official site)
+- **Discord Community**: https://cndi.run/di?utm_source=c2cPE
 - **Related Projects**:
+  - Argo CD: https://argo-cd.readthedocs.io
+  - Terraform: https://www.terraform.io
+  - GitHub Actions: https://github.com/features/actions
+  - Prometheus: https://prometheus.io
+  - Grafana: https://grafana.com
+  - Loki: https://grafana.com/oss/loki
+  - Cert-Manager: https://cert-manager.io
+  - Sealed Secrets: https://github.com/bitnami-labs/sealed-secrets
+  - Checkov: https://www.checkov.io
+  - Helm: https://helm.sh
   - Crossplane: https://crossplane.io
   - Kubefirst: https://kubefirst.io
   - Backstage: https://backstage.io
-  - Argo CD: https://argo-cd.readthedocs.io
-  - Terraform: https://www.terraform.io
