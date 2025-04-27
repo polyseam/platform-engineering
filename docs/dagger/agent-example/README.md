@@ -232,7 +232,7 @@ class AgentExample:
         analyze_results = (
             dag.llm()
             .with_env(environment)
-            .with_prompt_file(dag.current_module().source().file("terraformer.txt"))
+            .with_prompt_file(dag.current_module().source().file("terraformer_prompt.txt"))
         )
 
         # Comment the LLM's last reply on a GitHub pull request
@@ -266,7 +266,7 @@ class AgentExample:
 3️⃣ **AI-Powered Output Interpretation** 🧠📋
 
 - The output of the Terraform plan is passed to an **LLM environment**, which:
-  - Uses a predefined `terraformer.txt` prompt template.
+  - Uses a predefined `terraformer_prompt.txt` prompt template.
   - Generates a **natural language summary or analysis** of the Terraform output.
 - Finally, the AI-generated summary is **posted as a comment** on a GitHub pull request using the earlier `comment_on_pr` function.
 - This provides a **human-readable, intelligent insight** into the changes proposed by the Terraform config—right inside your GitHub workflow.
@@ -301,7 +301,7 @@ This will kickoff our Dagger pipeline and we can monitor it in real time in [Dag
 
 Opening that trace reveals some handy logging messages that allow us to drill down into what the agent actually did. Here are a few examples:
 
-- Our prompt from our `terraformer.txt` file along with the assignment we passed through when we leveraged `dagger call` to invoke our agent.
+- Our prompt from our `terraformer_prompt.txt` file along with the assignment we passed through when we leveraged `dagger call` to invoke our agent.
 
 ![Dagger AI Agent Cloud Trace 1](../assets/dagger_ai_agent_trace_1.png)
 
