@@ -1,0 +1,10 @@
+{
+    "github.codespaces.defaultExtensions": [
+        "ms-azuretools.vscode-docker", // Docker extension for managing containers
+        "HashiCorp.terraform",         // Terraform extension for IaC
+        "ms-azuretools.vscode-bicep",  // Bicep extension for Azure resource management
+        "golang.go",                   // Go extension for Dagger pipelines
+        "ms-python.python",            // Python extension for Dagger pipelines
+        "redhat.vscode-yaml"           // YAML extension for configuration files
+    ]
+}
