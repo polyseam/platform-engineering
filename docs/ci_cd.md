@@ -44,7 +44,7 @@ GitHub is a central hub for managing source code and collaboration, and it plays
 
 ## 🌟 Walkthrough: Dagger Labs
 
-For a hands-on lab experience, explore the **[Dagger README](https://github.com/codetocloudinc/platform-engineering/blob/feature/main/docs/dagger/README.md#-examples-with-dagger)**.
+For a hands-on lab experience, explore the **[Dagger README](../docs/dagger/README.md)**.
 
 ## Conclusion
 

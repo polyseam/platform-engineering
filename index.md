@@ -49,12 +49,14 @@ Platform Engineering encompasses several key components:
 
 - **[Infrastructure as Code (IaC)](docs/iac.md)**: Managing and provisioning infrastructure through code, ensuring consistency and repeatability.
 - **[Continuous Integration and Delivery (CI/CD)](docs/ci_cd.md)**: Automating the process of integrating code changes, running tests, detecting issues early, and streamlining the deployment process to deliver applications to production quickly and safely.
+- **[Codespaces](docs/codespaces.md)**: Providing cloud-hosted and local development environments that are pre-configured and ready to use, enabling developers to start coding instantly without complex local setup.
 - **[Monitoring and Observability](docs/monitoring.md)**: Implementing tools and practices to monitor system performance and gain insights into application behavior.
 - **[Security and Compliance](docs/security.md)**: Integrating security measures and compliance checks into the development and deployment processes.
 - **[Automation and Scripting](docs/automation.md)**: Automating repetitive tasks to improve efficiency and reduce human error.
 - **[Cloud-Native Architectures](docs/cloud_native.md)**: Designing applications to leverage the full potential of cloud environments, including scalability, resilience, and cost-efficiency.
 - **[Internal Development Platforms](docs/internal_development_platforms.md)**: Centralized platforms providing developers with self-service access to tools, environments, and resources needed for development.
 - **[Kubernetes](docs/kubernetes.md)**: Orchestrating containerized applications for automated deployment, scaling, and management.
+
 
 ---
 
