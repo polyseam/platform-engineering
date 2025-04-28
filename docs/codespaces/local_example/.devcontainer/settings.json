@@ -1,0 +1,13 @@
+{
+  // Specifies the default extensions to be installed automatically in GitHub Codespaces
+  "github.codespaces.defaultExtensions": [
+    "ms-azuretools.vscode-docker", // Microsoft Docker extension for managing containers
+    "HashiCorp.terraform",         // Terraform extension for working with Infrastructure as Code (IaC)
+    "ms-azuretools.vscode-bicep",  // Bicep extension for Azure resource management
+    "streetsidesoftware.code-spell-checker", // Spell checker for code comments and documentation
+    "esbenp.prettier-vscode",       // Prettier extension for consistent code formatting
+    "golang.go",                    // Go extension for Dagger pipelines written in Go
+    "ms-python.python",             // Python extension for Dagger pipelines written in Python
+    "redhat.vscode-yaml"            // YAML extension for working with configuration files
+  ]
+}
