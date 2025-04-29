@@ -1,0 +1,39 @@
+{
+    // The name of the development container configuration
+    "name": "Code To Cloud PE Local Codespace",
+
+    // Specifies the Dockerfile to use for building the development container
+    "build": { 
+        "dockerfile": "Dockerfile" 
+    },
+
+    // Customizations for Visual Studio Code within the development container
+    "customizations": {
+        "vscode": {
+            // List of VS Code extensions to install automatically in the container
+            "extensions": [
+                "ms-azuretools.vscode-docker", // Microsoft Docker extension for managing containers
+                "HashiCorp.terraform",         // Terraform extension for working with IaC
+                "ms-azuretools.vscode-bicep",  // Bicep extension for Azure resource management
+                "streetsidesoftware.code-spell-checker", // Spell checker for code comments and documentation
+                "esbenp.prettier-vscode",       // Prettier extension for code formatting
+                "golang.go",                    // Go extension for Dagger pipelines written in Go
+                "ms-python.python",             // Python extension for Dagger pipelines written in Python
+                "redhat.vscode-yaml"            // YAML extension for working with configuration files
+            ],
+            // VS Code settings specific to the container environment
+            "settings": {
+                "extensions.ignoreRecommendations": true // Disables extension recommendations in the container
+            }
+        }
+    },
+
+    // Mount Docker socket for Docker CLI access
+    "mounts": [
+        "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind", // Mount Docker socket for Docker CLI
+        "source=${env:HOME}/.azure,target=/root/.azure,type=bind" // Mount Azure credentials
+    ],
+
+    // Command to run after the container is created and ready
+    //"postCreateCommand": "make ensure" // Ensures dependencies or setup tasks are completed
+}
