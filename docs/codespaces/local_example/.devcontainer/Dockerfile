@@ -12,7 +12,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     software-properties-common \
     wget \
     git \
-    docker.io && \
+    docker.io \
+    unzip && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install Azure CLI
@@ -24,6 +25,12 @@ RUN curl -fsSL https://apt.releases.hashicorp.com/gpg | gpg --dearmor -o /usr/sh
     apt-get update && apt-get install -y --no-install-recommends terraform && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
+# Install OpenTofu
+RUN curl --proto '=https' --tlsv1.2 -fsSL https://get.opentofu.org/install-opentofu.sh -o install-opentofu.sh && \
+    chmod +x install-opentofu.sh && \
+    ./install-opentofu.sh --install-method standalone || (cat install-opentofu.sh && exit 1) && \
+    rm -f install-opentofu.sh
+
 # Install Dagger CLI
 RUN curl -L https://dl.dagger.io/dagger/install.sh | bash
 
@@ -32,6 +39,9 @@ RUN az bicep install
 
 # Verify Terraform installation
 RUN terraform --version
+
+# Verify OpenTofu installation
+RUN tofu --version
 
 # Verify Azure CLI installation
 RUN az version
