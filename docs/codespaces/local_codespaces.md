@@ -48,12 +48,16 @@ Local Codespaces bring the power of pre-configured development environments to y
 3. **⚙️ Configure the `.devcontainer` Files**:  
    - The repository includes a pre-configured `.devcontainer` folder located at `./local_example/.devcontainer`.  
    - This folder contains:  
-     - **`Dockerfile`**: Defines the container environment and installs required tools (e.g., Azure CLI, Terraform, OpenTofu, Dagger CLI).  
-     - **`devcontainer.json`**: Specifies VS Code extensions, settings, and configurations for the container.  
-     - **`settings.json`**: Defines additional VS Code settings, such as default extensions to install in GitHub Codespaces.  
+     - **`Dockerfile`**: Defines the container environment and installs required tools:
+       - Azure CLI (with Bicep CLI)
+       - Terraform
+       - OpenTofu
+       - Dagger CLI
+     - **`devcontainer.json`**: Configures VS Code extensions, settings, and container-specific configurations.  
+     - **`settings.json`**: Ensures required extensions (e.g., Docker, Terraform, Bicep, Go, Python) are installed automatically and customizes VS Code behavior.  
    - **What `settings.json` Does**:  
-     - The `settings.json` file ensures that specific extensions (e.g., Docker, Terraform, Bicep, Go, Python) are installed automatically in the container.  
-     - It also customizes VS Code behavior, such as disabling extension recommendations to streamline the development experience.  
+     - Installs specific extensions automatically.  
+     - Customizes VS Code behavior, such as disabling extension recommendations to streamline the development experience.  
    - Ensure these files are correctly configured for your development needs.
 
 4. **🚀 Start Your Local Codespace**:  
