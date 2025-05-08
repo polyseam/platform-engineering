@@ -23,7 +23,10 @@
             ],
             // VS Code settings specific to the container environment
             "settings": {
-                "extensions.ignoreRecommendations": true // Disables extension recommendations in the container
+                "extensions.ignoreRecommendations": true,
+                "editor.fontSize": 16,
+                "terminal.integrated.fontSize": 16,
+                "terminal.integrated.scrollback": 1000
             }
         }
     },
@@ -35,5 +38,18 @@
     ],
 
     // Command to run after the container is created and ready
-    //"postCreateCommand": "make ensure" // Ensures dependencies or setup tasks are completed
+    //"postCreateCommand": "make ensure", // Uncomment if needed
+
+    // Commands to run after the container starts
+    "postStartCommand": {
+        "set-git-config-safe-directory": "git config --global --add safe.directory ${containerWorkspaceFolder}",
+        "set-git-config-line-endings": "git config --global core.autocrlf input",
+        "set-git-config-gpg-program": "git config --global --add gpg.program /usr/bin/gpg",
+        "print-message-of-the-day": "echo \"bash /etc/update-motd.d/00-header\" >> ~/.bashrc"
+    },
+
+    // Commands to run after attaching to the container
+    "postAttachCommand": {
+        "print-message-of-the-day": "bash /etc.update-motd.d/00-header"
+    }
 }
