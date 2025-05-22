@@ -37,6 +37,29 @@ RUN curl -L https://dl.dagger.io/dagger/install.sh | bash
 # Install the Bicep CLI using the Azure CLI
 RUN az bicep install
 
+# Copy the code_to_cloud.txt file into the container
+COPY motd/code_to_cloud.txt /etc/motd-code-to-cloud.txt
+
+# Add the custom MOTD script
+RUN echo '#!/bin/bash\n\
+cat /etc/motd-code-to-cloud.txt' > /etc/update-motd.d/99-custom && \
+    chmod +x /etc/update-motd.d/99-custom
+
+# Create an entrypoint script to run the MOTD script on container start
+RUN echo '#!/bin/bash\n\
+/etc/update-motd.d/99-custom\n\
+exec "$@"' > /usr/local/bin/entrypoint.sh && \
+    chmod +x /usr/local/bin/entrypoint.sh
+
+# Set the entrypoint to the custom script
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
+
+# Ensure MOTD is dynamically generated
+RUN ln -sf /run/motd.dynamic /etc/motd || touch /etc/motd
+
+# Force the MOTD to display on login
+RUN echo 'if [ -f /etc/motd ]; then cat /etc/motd; fi' >> /etc/bash.bashrc
+
 # Verify Terraform installation
 RUN terraform --version
 
@@ -51,3 +74,9 @@ RUN az bicep version
 
 # Verify Dagger CLI installation
 RUN dagger version
+
+# Verify the MOTD script exists and is executable
+RUN ls -l /etc/update-motd.d/99-custom
+
+# Verify the code_to_cloud.txt file exists
+RUN ls -l /etc/motd-code-to-cloud.txt
