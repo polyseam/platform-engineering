@@ -51,7 +51,7 @@ This project is not vendor-sponsored and utilizes free, community, and open-sour
 
 Explore our comprehensive index of platform engineering topics and modules to deepen your understanding and skills:
 
-- **[Platform Engineering Resources](index.md)**
+- **[Platform Engineering Resources](module_index.md)**
 
 <!-- Contributing section -->
 ## 🤝 Contributing
