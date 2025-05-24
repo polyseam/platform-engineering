@@ -78,8 +78,8 @@ For detailed breakdowns, best practices, and setup guides, see the following sub
 ## 📖 Further Reading
 
 - [🌍 Platform Engineering Community](https://platformengineering.org/)
-- [📊 CNCF IDP Landscape](https://landscape.cncf.io/category=internal-developer-platform)
-- [☁️ Azure IDP Guidance](https://learn.microsoft.com/en-us/azure/architecture/cloud-adoption-guide/innovate/idp)
+- [📊 CNCF Bakcstage Project](https://www.cncf.io/projects/backstage/)
+- [☁️ Azure Platform Engineering Guidance](https://learn.microsoft.com/en-us/platform-engineering/)
 - [📝 Radius Blog: Platform Engineering with Radius](https://blog.radapp.io/posts/2025/05/13/platform-engineering-with-radius-to-build-application-centric-idps/)
 
 ---
