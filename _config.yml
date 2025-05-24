@@ -1,0 +1,5 @@
+title: "Platform Engineering Hub"
+description: "A collaborative space for Platform Engineering, DevSecOps, and cloud-native best practices."
+theme: minima
+markdown: kramdown
+repository: codetocloudorg/platform-engineering-hub
