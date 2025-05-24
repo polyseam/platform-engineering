@@ -4,21 +4,12 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/codetocloudinc/platform-engineering-hub" target="_blank">
-    <img src="https://img.shields.io/github/stars/codetocloudinc/platform-engineering-hub?style=for-the-badge" alt="GitHub Repo stars" style="height:33px;">
-  </a>
-  <a href="https://www.codetocloud.io" target="_blank">
-    <img src="https://img.shields.io/website?url=https%3A%2F%2Fwww.codetocloud.io&style=for-the-badge" alt="Website" style="height:33px;">
-  </a>
-  <a href="https://github.com/codetocloudinc/platform-engineering-hub/fork" target="_blank">
-    <img src="https://img.shields.io/github/forks/codetocloudinc/platform-engineering-hub?style=for-the-badge" alt="GitHub Repo Forks" style="height:33px;">
-  </a>
-  <a href="https://github.com/codetocloudinc/platform-engineering-hub/issues" target="_blank">
-    <img src="https://img.shields.io/github/issues/codetocloudinc/platform-engineering-hub?style=for-the-badge" alt="GitHub Repo issues" style="height:33px;">
-  </a>
-  <a href="https://join.slack.com/t/codetocloud/shared_invite/xyz" target="_blank">
-    <img src="https://img.shields.io/badge/Join-our%20Slack-4A154B?logo=slack&logoColor=white&style=for-the-badge" alt="Join our Slack" style="height:33px;">
-  </a>
+  <img src="https://img.shields.io/github/stars/codetocloudinc/platform-engineering-hub?style=for-the-badge" alt="GitHub Repo stars" style="height:33px;">
+  <img src="https://img.shields.io/website?url=https%3A%2F%2Fwww.codetocloud.io&style=for-the-badge" alt="Website" style="height:33px;">
+  <img src="https://img.shields.io/github/forks/codetocloudinc/platform-engineering-hub?style=for-the-badge" alt="GitHub Repo Forks" style="height:33px;">
+  <img src="https://img.shields.io/github/issues/codetocloudinc/platform-engineering-hub?style=for-the-badge" alt="GitHub Repo issues" style="height:33px;">
+  <img src="https://img.shields.io/github/contributors/codetocloudinc/platform-engineering-hub?style=for-the-badge" alt="GitHub Contributors" style="height:33px;">
+  <img src="https://img.shields.io/badge/Join-our%20Slack-4A154B?logo=slack&logoColor=white&style=for-the-badge" alt="Join our Slack" style="height:33px;">
 </p>
 
 # 🌐 Platform Engineering Hub
