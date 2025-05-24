@@ -5,14 +5,14 @@
 </p>
 -->
 
-<p align="center">
-  <img src="https://img.shields.io/github/stars/codetocloudinc/platform-engineering-hub?style=for-the-badge" alt="GitHub Repo stars" style="height:33px;">
-  <img src="https://img.shields.io/website?url=https%3A%2F%2Fwww.codetocloud.io&style=for-the-badge" alt="Website" style="height:33px;">
-  <img src="https://img.shields.io/github/forks/codetocloudinc/platform-engineering-hub?style=for-the-badge" alt="GitHub Repo Forks" style="height:33px;">
-  <img src="https://img.shields.io/github/issues/codetocloudinc/platform-engineering-hub?style=for-the-badge" alt="GitHub Repo issues" style="height:33px;">
-  <img src="https://img.shields.io/github/contributors/codetocloudinc/platform-engineering-hub?style=for-the-badge" alt="GitHub Contributors" style="height:33px;">
-  <img src="https://img.shields.io/badge/Join-our%20Slack-4A154B?logo=slack&logoColor=white&style=for-the-badge" alt="Join our Slack" style="height:33px;">
-</p>
+<div align="center" style="margin-bottom: 1em;">
+  <a class="github-button" href="https://github.com/codetocloudinc/platform-engineering-hub" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star codetocloudinc/platform-engineering-hub on GitHub">Star</a>
+  <a class="github-button" href="https://github.com/codetocloudinc/platform-engineering-hub/fork" data-size="large" data-icon="octicon-repo-forked" data-show-count="true" aria-label="Fork codetocloudinc/platform-engineering-hub on GitHub">Fork</a>
+  <a class="github-button" href="https://github.com/codetocloudinc/platform-engineering-hub/issues" data-size="large" data-icon="octicon-issue-opened" data-show-count="true" aria-label="Issues for codetocloudinc/platform-engineering-hub on GitHub">Issues</a>
+  <a class="github-button" href="https://github.com/codetocloudinc/platform-engineering-hub/graphs/contributors" data-size="large" data-icon="octicon-organization" aria-label="Contributors to codetocloudinc/platform-engineering-hub on GitHub">Contributors</a>
+  <a class="github-button" href="https://www.codetocloud.io" data-size="large" aria-label="Website">Website</a>
+  <a class="github-button" href="https://join.slack.com/t/codetocloud/shared_invite/xyz" data-size="large" aria-label="Join our Slack">Join our Slack</a>
+</div>
 
 ## 📑 Table of Contents
 - [Project Overview](#project-overview)
