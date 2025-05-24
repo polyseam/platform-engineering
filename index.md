@@ -1,9 +1,18 @@
 <!-- Centered image and badges -->
 <p align="center">
- <img src="https://github.com/codetocloudinc/artwork/blob/main/examples/images/current/code_to_cloud_1920_x_1080_desktop.png?raw=true" alt="Code To Cloud Logo" width="80%" height="90%" />
+  <img src="https://github.com/codetocloudinc/artwork/blob/main/examples/images/current/code_to_cloud_1920_x_1080_desktop.png?raw=true" alt="Code To Cloud Logo" width="80%" height="90%" /><br>
+  <!-- Badges for GitHub stars, website, forks, and issues -->
+  <img src="https://img.shields.io/github/stars/codetocloudinc/platform-engineering-hub" alt="GitHub Repo stars">
+  <a href="https://www.codetocloud.io">
+    <img src="https://img.shields.io/website?url=https%3A%2F%2Fwww.codetocloud.io" alt="Website">
+  </a>
+  <a href="https://www.codetocloud.io">
+    <img src="https://img.shields.io/github/forks/codetocloudinc/platform-engineering-hub" alt="GitHub Repo Forks">
+  </a>
+  <a href="https://github.com/codetocloudinc/platform-engineering-hub">
+    <img src="https://img.shields.io/github/issues/codetocloudinc/platform-engineering-hub" alt="GitHub Repo issues">
+  </a>
 </p>
-
-![GitHub Repo stars][def] [![Website](https://img.shields.io/website?url=https%3A%2F%2Fwww.codetocloud.io)](https://www.codetocloud.io) [![GitHub Repo Forks](https://img.shields.io/github/forks/codetocloudinc/platform-engineering-hub)](https://www.codetocloud.io) [![GitHub Repo issues](https://img.shields.io/github/issues/codetocloudinc/platform-engineering-hub)](https://github.com/codetocloudinc/platform-engineering-hub)
 
 # 🌐 Platform Engineering Hub
 
@@ -86,8 +95,8 @@ A **Platform Engineering Reference Architecture** provides a standardized framew
 
 #### 🌥️ Cloud-Specific Architectures
 For a deep dive into platform engineering architectures tailored to specific cloud environments, check out the following:  
-- 🔹 **Azure**: [*Azure Platform Engineering Architecture*](docs/images/azure_ref_architecture.jpg)  
-- 🔹 **Red Hat OpenShift**: [*OpenShift Platform Engineering Architecture*](docs/images/red_hat_openshift_ref_architecture.jpg)  
+-  **Azure**: [*Azure Platform Engineering Architecture*](docs/images/azure_ref_architecture.jpg)  
+-  **Red Hat OpenShift**: [*OpenShift Platform Engineering Architecture*](docs/images/red_hat_openshift_ref_architecture.jpg)  
 
 ### 👩‍💻 The Role of a Platform Engineer
 A Platform Engineer is responsible for building and maintaining the platform that supports the entire software development lifecycle. This includes:
@@ -122,8 +131,3 @@ We welcome contributions from everyone. Feel free to open issues, submit pull re
 Review our [contributing policy here](/CONTRIBUTING.md)
 
 Thank you for being a part of our journey!
-
----
-
-<!-- Definition for the GitHub stars badge -->
-[def]: https://img.shields.io/github/stars/codetocloudinc/platform-engineering-hub
