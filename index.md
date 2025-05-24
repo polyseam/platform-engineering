@@ -4,35 +4,22 @@ title: "Platform Engineering Hub"
 description: "A collaborative space for Platform Engineering, DevSecOps, and cloud-native best practices."
 ---
 
-<header class="page-header" role="banner">
-  <center>
-    <a href="{{ site.url }}">
-      <img src="https://github.com/codetocloudinc/artwork/blob/main/examples/images/current/code_to_cloud_1920_x_1080_desktop.png?raw=true" alt="Code To Cloud Logo" width="60%" />
-    </a>
-  </center>
-  <h1 class="project-name">{{ site.title }}</h1>
-  <h2 class="project-tagline">{{ site.description }}</h2>
-  <p align="center">
-    <a href="https://github.com/{{ site.github_username }}/platform-engineering-hub" class="btn">View on GitHub</a>
-    <a href="https://www.linkedin.com/code-to-cloud/{{ site.linkedin_username }}/" class="btn">LinkedIn</a>
-    <a href="https://join.slack.com/t/codetocloud/shared_invite/xyz" class="btn">Join Slack</a>
-    <a href="https://www.codetocloud.io" class="btn">Website</a>
-    <!-- Add more buttons as needed -->
-  </p>
-</header>
-
-<!-- Centered image and badges -->
 <p align="center">
-  <!-- Badges for GitHub stars, website, forks, and issues -->
-  <img src="https://img.shields.io/github/stars/codetocloudinc/platform-engineering-hub" alt="GitHub Repo stars">
-  <a href="https://www.codetocloud.io">
-    <img src="https://img.shields.io/website?url=https%3A%2F%2Fwww.codetocloud.io" alt="Website">
+  <img src="https://github.com/codetocloudinc/artwork/blob/main/examples/images/current/code_to_cloud_1920_x_1080_desktop.png?raw=true" alt="Code To Cloud Logo" width="60%" />
+</p>
+
+<p align="center">
+  <a href="https://github.com/codetocloudorg/platform-engineering-hub" target="_blank">
+    <img src="https://img.shields.io/badge/View%20on-GitHub-24292f?logo=github&logoColor=white" alt="View on GitHub">
   </a>
-  <a href="https://www.codetocloud.io">
-    <img src="https://img.shields.io/github/forks/codetocloudinc/platform-engineering-hub" alt="GitHub Repo Forks">
+  <a href="https://www.linkedin.com/company/code-to-cloud/" target="_blank">
+    <img src="https://img.shields.io/badge/Follow%20us-LinkedIn-0077b5?logo=linkedin&logoColor=white" alt="LinkedIn">
   </a>
-  <a href="https://github.com/codetocloudinc/platform-engineering-hub">
-    <img src="https://img.shields.io/github/issues/codetocloudinc/platform-engineering-hub" alt="GitHub Repo issues">
+  <a href="https://join.slack.com/t/codetocloud/shared_invite/xyz" target="_blank">
+    <img src="https://img.shields.io/badge/Join%20our-Slack-4A154B?logo=slack&logoColor=white" alt="Join our Slack">
+  </a>
+  <a href="https://www.codetocloud.io" target="_blank">
+    <img src="https://img.shields.io/badge/Visit-Website-blue?logo=google-chrome&logoColor=white" alt="Website">
   </a>
 </p>
 
