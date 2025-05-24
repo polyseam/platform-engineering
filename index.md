@@ -1,7 +1,9 @@
 <!-- Centered image and badges -->
+<!--
 <p align="center">
   <img src="https://github.com/codetocloudinc/artwork/blob/main/examples/images/current/code_to_cloud_1920_x_1080_desktop.png?raw=true" alt="Code To Cloud Logo" width="80%" height="90%" />
 </p>
+-->
 
 <p align="center">
   <img src="https://img.shields.io/github/stars/codetocloudinc/platform-engineering-hub?style=for-the-badge" alt="GitHub Repo stars" style="height:33px;">
@@ -11,8 +13,6 @@
   <img src="https://img.shields.io/github/contributors/codetocloudinc/platform-engineering-hub?style=for-the-badge" alt="GitHub Contributors" style="height:33px;">
   <img src="https://img.shields.io/badge/Join-our%20Slack-4A154B?logo=slack&logoColor=white&style=for-the-badge" alt="Join our Slack" style="height:33px;">
 </p>
-
-# 🌐 Platform Engineering Hub
 
 ## 📑 Table of Contents
 - [Project Overview](#project-overview)
