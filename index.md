@@ -17,7 +17,7 @@
   <a class="github-button" href="https://github.com/codetocloudinc/platform-engineering-hub/issues" data-size="default" data-icon="octicon-issue-opened" data-show-count="true" aria-label="Issues for codetocloudinc/platform-engineering-hub on GitHub">Issues</a>
   <a class="github-button" href="https://github.com/codetocloudinc/platform-engineering-hub/graphs/contributors" data-size="default" data-icon="octicon-organization" aria-label="Contributors to codetocloudinc/platform-engineering-hub on GitHub">Contributors</a>
   <a class="github-button" href="https://www.codetocloud.io" data-size="default" aria-label="Website">Website</a>
-  <a class="github-button" href="https://join.slack.com/t/codetocloud/shared_invite/xyz" data-size="default" aria-label="Join our Slack">Join our Slack</a>
+  <a class="github-button" href="https://www.codetocloud.io/joinus" data-size="default" aria-label="Join our Slack">Join our Slack</a>
 </div>
 
 ---
