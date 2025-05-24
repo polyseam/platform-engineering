@@ -1,3 +1,9 @@
+---
+layout: default
+title: "Platform Engineering Hub"
+description: "A collaborative space for Platform Engineering, DevSecOps, and cloud-native best practices."
+---
+
 <!-- Centered image and badges -->
 <p align="center">
   <img src="https://github.com/codetocloudinc/artwork/blob/main/examples/images/current/code_to_cloud_1920_x_1080_desktop.png?raw=true" alt="Code To Cloud Logo" width="80%" height="90%" /><br>
