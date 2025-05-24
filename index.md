@@ -1,9 +1,25 @@
 <!-- Centered image and badges -->
 <p align="center">
- <img src="https://github.com/codetocloudinc/artwork/blob/main/examples/images/current/code_to_cloud_1920_x_1080_desktop.png?raw=true" alt="Code To Cloud Logo" width="80%" height="90%" />
+  <img src="https://github.com/codetocloudinc/artwork/blob/main/examples/images/current/code_to_cloud_1920_x_1080_desktop.png?raw=true" alt="Code To Cloud Logo" width="80%" height="90%" />
 </p>
 
-![GitHub Repo stars][def] [![Website](https://img.shields.io/website?url=https%3A%2F%2Fwww.codetocloud.io)](https://www.codetocloud.io) [![GitHub Repo Forks](https://img.shields.io/github/forks/codetocloudinc/platform-engineering-hub)](https://www.codetocloud.io) [![GitHub Repo issues](https://img.shields.io/github/issues/codetocloudinc/platform-engineering-hub)](https://github.com/codetocloudinc/platform-engineering-hub)
+<p align="center">
+  <a href="https://github.com/codetocloudinc/platform-engineering-hub" target="_blank">
+    <img src="https://img.shields.io/github/stars/codetocloudinc/platform-engineering-hub?style=for-the-badge" alt="GitHub Repo stars" style="height:33px;">
+  </a>
+  <a href="https://www.codetocloud.io" target="_blank">
+    <img src="https://img.shields.io/website?url=https%3A%2F%2Fwww.codetocloud.io&style=for-the-badge" alt="Website" style="height:33px;">
+  </a>
+  <a href="https://github.com/codetocloudinc/platform-engineering-hub/fork" target="_blank">
+    <img src="https://img.shields.io/github/forks/codetocloudinc/platform-engineering-hub?style=for-the-badge" alt="GitHub Repo Forks" style="height:33px;">
+  </a>
+  <a href="https://github.com/codetocloudinc/platform-engineering-hub/issues" target="_blank">
+    <img src="https://img.shields.io/github/issues/codetocloudinc/platform-engineering-hub?style=for-the-badge" alt="GitHub Repo issues" style="height:33px;">
+  </a>
+  <a href="https://join.slack.com/t/codetocloud/shared_invite/xyz" target="_blank">
+    <img src="https://img.shields.io/badge/Join-our%20Slack-4A154B?logo=slack&logoColor=white&style=for-the-badge" alt="Join our Slack" style="height:33px;">
+  </a>
+</p>
 
 # 🌐 Platform Engineering Hub
 
@@ -122,8 +138,3 @@ We welcome contributions from everyone. Feel free to open issues, submit pull re
 Review our [contributing policy here](/CONTRIBUTING.md)
 
 Thank you for being a part of our journey!
-
----
-
-<!-- Definition for the GitHub stars badge -->
-[def]: https://img.shields.io/github/stars/codetocloudinc/platform-engineering-hub
