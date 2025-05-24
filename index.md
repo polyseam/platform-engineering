@@ -1,118 +1,70 @@
-# 🌐 Platform Engineering
+<!-- Centered image at the top of the README -->
+<p align="center">
+ <img src="https://github.com/codetocloudinc/artwork/blob/main/examples/images/current/code_to_cloud_1920_x_1080_desktop.png?raw=true" alt="Code To Cloud Logo" width="80%" height="90%" />
+</p>
 
-## What is Platform Engineering?
+<!-- Badges for GitHub stars, website, forks, and issues -->
+![GitHub Repo stars][def] [![Website](https://img.shields.io/website?url=https%3A%2F%2Fwww.codetocloud.io)](https://www.codetocloud.io) [![GitHub Repo Forks](https://img.shields.io/github/forks/codetocloudinc/platform-engineering-hub)](https://www.codetocloud.io) [![GitHub Repo issues](https://img.shields.io/github/issues/codetocloudinc/platform-engineering-hub)](https://github.com/codetocloudinc/platform-engineering-hub)
 
-Platform Engineering builds on DevOps principles to enhance **security**, **compliance**, **cost efficiency**, and **time-to-value** by improving developer experiences and enabling self-service within a secure, governed framework.
+<!-- Main title of the README -->
+# 🌐 Platform Engineering Hub
 
-It’s both a **mindset shift** and a **set of tools and systems** designed to reduce friction in development. Well-designed platforms eliminate toil by streamlining developer workflows and simplifying operations. These platforms include tools that:
+<!-- Introduction to the repository -->
+Welcome to the **Platform Engineering Hub**! This repository is a vibrant and collaborative space dedicated to learning and sharing knowledge about Platform Engineering, DevSecOps, and related fields. 
 
-- **Empower developers** with self-service options (e.g., starter kits, IDE plugins)  
-- **Automate common tasks**  
-- **Encapsulate best practices** into reusable components  
-- **Provide early feedback** on issues like security risks  
-- **Manage infrastructure and tools** to simplify operations  
+<!-- Acknowledgements section -->
+## 🎉 Acknowledgements
 
-This approach enables development teams to focus on building and delivering value efficiently.
+<!-- Gratitude to the Code to Cloud community with a link to their socials page -->
+We extend our heartfelt gratitude to the **Code to Cloud** community for their continuous support and contributions. You can connect with them on their [socials page](https://connect.codetocloud.io).
 
----
+<!-- Author section -->
+## ✍️ Author
 
-## 🚀 Why Platform Engineering?
+<!-- Brief history of the repository and its evolution -->
+Started by **[Kevin Evans](https://linktr.ee/bash.sh)** as a way to document his journey in Platform Engineering, this repository has evolved into a centralized hub for platform engineering teams. It provides resources, best practices, and automation tools, including IaC templates, blueprints, and operational guides to help build scalable, secure, and efficient platforms for cloud-native environments and DevOps workflows.  
 
-In today's fast-paced tech environment, organizations need to innovate quickly while maintaining high standards of reliability and security. Platform Engineering addresses these needs by:
+<!-- Fun fact about the inspiration for the repository -->
+The idea for this repo came while  **[Kevin](https://linktr.ee/bash.sh)** was watching *[Big Trouble in Little China](https://www.imdb.com/title/tt0090728/)*—because, as **Jack Burton** would say, *"It's all in the reflexes."*  
 
-- **🚀 Accelerating Development**: Providing developers with easy access to the tools and environments they need, reducing the time spent on setup and configuration.
-- **🔒 Enhancing Security**: Implementing consistent security practices across the platform, ensuring compliance and protecting sensitive data.
-- **📈 Improving Reliability**: Standardizing infrastructure and processes to reduce errors and increase system stability.
-- **💡 Fostering Innovation**: Enabling teams to experiment and iterate rapidly by providing a flexible and scalable platform.
+<!-- Project evolution section -->
+## 📈 Project Evolution
 
----
+<!-- Description of the project's growth and community involvement -->
+What began as a personal learning journey has evolved into a structured learning resource for Platform Engineering principles, processes, and tooling. We encourage community contributions, feedback, and discussions to further enrich this repository.
 
-## 🛠️ Platform Tooling Landscape
+<!-- Focus areas of the project -->
+## 🚀 Focus Areas
 
-The platform engineering tooling landscape is rapidly evolving, encompassing a wide range of technologies that streamline developer workflows, enhance automation, and improve infrastructure management. This includes:
+- **Platform Engineering**: Continuous integration, continuous delivery, infrastructure as code, and more.
+- **DevSecOps**: Integrating security practices into the DevOps pipeline.
+- **Community Sessions**: Interactive sessions and discussions to foster learning and collaboration.
 
-- **Internal Developer Platforms (IDPs)**  
-- **Infrastructure as Code (IaC)** tools  
-- **GitOps workflows**  
-- **Service meshes**  
-- **Cloud-native runtime environments**  
+<!-- Tools and technologies used in the project -->
+## 🛠️ Tools and Technologies
 
-For a deeper dive into the current state of platform engineering and its tooling ecosystem, check out this overview:  
+<!-- Note about the project's non-vendor-sponsored nature -->
+This project is not vendor-sponsored and utilizes free, community, and open-source software.
 
-- **[Platform Engineering Landscape Overview](docs/platform_engineering_landscape.md)** 🚀
+<!-- Index of platform engineering topics and modules -->
+## 📚 Platform Engineering Topics and Modules
 
----
+Explore our comprehensive index of platform engineering topics and modules to deepen your understanding and skills:
 
-## 🔑 Key Components of Platform Engineering
+- **[Platform Engineering Resources](index.md)**
 
-Platform Engineering encompasses several key components:
+<!-- Contributing section -->
+## 🤝 Contributing
 
-- **[Infrastructure as Code (IaC)](docs/iac.md)**: Managing and provisioning infrastructure through code, ensuring consistency and repeatability.
-- **[Continuous Integration and Delivery (CI/CD)](docs/ci_cd.md)**: Automating the process of integrating code changes, running tests, detecting issues early, and streamlining the deployment process to deliver applications to production quickly and safely.
-- **[Codespaces](docs/codespaces.md)**: Providing cloud-hosted and local development environments that are pre-configured and ready to use, enabling developers to start coding instantly without complex local setup.
-- **[Monitoring and Observability](docs/monitoring.md)**: Implementing tools and practices to monitor system performance and gain insights into application behavior.
-- **[Security and Compliance](docs/security.md)**: Integrating security measures and compliance checks into the development and deployment processes.
-- **[Automation and Scripting](docs/automation.md)**: Automating repetitive tasks to improve efficiency and reduce human error.
-- **[Cloud-Native Architectures](docs/cloud_native.md)**: Designing applications to leverage the full potential of cloud environments, including scalability, resilience, and cost-efficiency.
-- **[Internal Development Platforms](docs/internal_development_platforms.md)**: Centralized platforms providing developers with self-service access to tools, environments, and resources needed for development.
-- **[Kubernetes](docs/kubernetes.md)**: Orchestrating containerized applications for automated deployment, scaling, and management.
+<!-- Invitation for contributions and participation -->
+We welcome contributions from everyone. Feel free to open issues, submit pull requests, and join discussions to help us improve and expand this resource.
 
+Review our [contributing policy here](/CONTRIBUTING.md)
 
----
-
-## 🏗️ Platform Engineering Reference Architecture  
-
-A **Platform Engineering Reference Architecture** provides a standardized framework for building scalable, secure, and efficient internal developer platforms (IDPs). It integrates key components like **Infrastructure as Code (IaC)**, **GitOps workflows**, **Kubernetes-based orchestration**, and **self-service developer portals** to streamline cloud-native application delivery.  
-
-### 🌥️ Cloud-Specific Architectures  
-
-For a deep dive into platform engineering architectures tailored to specific cloud environments, check out the following:  
-
-- 🔹 **Azure**: [*Azure Platform Engineering Architecture*](docs/images/azure_ref_architecture.jpg)  
-- 🔹 **Red Hat OpenShift**: [*OpenShift Platform Engineering Architecture*](docs/images/red_hat_openshift_ref_architecture.jpg)  
+<!-- Closing thank you note -->
+Thank you for being a part of our journey!
 
 ---
 
-## 👩‍💻 The Role of a Platform Engineer
-
-A Platform Engineer is responsible for building and maintaining the platform that supports the entire software development lifecycle. This includes:
-
-- **🛠️ Designing and implementing infrastructure solutions**
-- **🔧 Developing and maintaining CI/CD pipelines**
-- **📊 Setting up monitoring and alerting systems**
-- **🔐 Ensuring security best practices are followed**
-- **🤝 Collaborating with development teams to understand their needs and provide solutions**
-
----
-
-## 🎓 Platform Engineering Certification Pathways
-
-Check out our community-curated section on certification paths designed to support your platform engineering journey here:  
-
-- **[Certifications](docs/certifications.md)**
-
----
-
-## 🎙️ Platform Engineering Podcasts
-
-Explore our curated list of podcasts covering Cloud Native, Platform Engineering, Development, and DevSecOps here:  
-
-- **[Podcasts](docs/podcasts.md)**
-
----
-
-## 🖥️ Deploying Local Platform Engineering Toolset  
-
-Looking to trick out your terminal, switch VS Code to dark mode, or just nail that pro developer aesthetic? Look no further! Check out our docs on customizing your development environment and take your platform engineering setup to the next level. 🚀  
-
-- **[Dev-Setup](docs/development_setup.md)**
-
----
-
-## 🌟 Conclusion
-
-Platform Engineering is a critical function that empowers development teams to deliver high-quality software faster and more reliably. By creating a robust and scalable platform, organizations can achieve greater agility, security, and innovation.
-
----
-
-Explore the various topics and modules in this repository to deepen your understanding and skills in Platform Engineering. Happy learning! 🌟
+<!-- Definition for the GitHub stars badge -->
+[def]: https://img.shields.io/github/stars/codetocloudinc/platform-engineering-hub
