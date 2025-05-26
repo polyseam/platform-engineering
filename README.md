@@ -1,3 +1,19 @@
+## 📑 Table of Contents
+- [Project Overview](#project-overview)
+- [Platform Engineering Knowledge Base](#platform-engineering-knowledge-base)
+- [Learning & Community](#learning--community)
+- [Contributing](#contributing)
+
+<div align="center" style="margin: 1em 0;">
+  <a class="github-button" href="https://github.com/codetocloudinc/platform-engineering-hub" data-icon="octicon-star" data-size="default" data-show-count="true" aria-label="Star codetocloudinc/platform-engineering-hub on GitHub">Star</a>
+  <a class="github-button" href="https://github.com/codetocloudinc/platform-engineering-hub/fork" data-size="default" data-icon="octicon-repo-forked" data-show-count="true" aria-label="Fork codetocloudinc/platform-engineering-hub on GitHub">Fork</a>
+  <a class="github-button" href="https://github.com/codetocloudinc/platform-engineering-hub/issues" data-size="default" data-icon="octicon-issue-opened" data-show-count="true" aria-label="Issues for codetocloudinc/platform-engineering-hub on GitHub">Issues</a>
+  <a class="github-button" href="https://github.com/codetocloudinc/platform-engineering-hub/graphs/contributors" data-size="default" data-icon="octicon-organization" aria-label="Contributors to codetocloudinc/platform-engineering-hub on GitHub">Contributors</a>
+  <a class="github-button" href="https://www.codetocloud.io" data-size="default" aria-label="Website">Website</a>
+  <a class="github-button" href="https://www.codetocloud.io/joinus" data-size="default" aria-label="Join our Slack">Join our Slack</a>
+</div>
+
+---
 ## 🏢 Project Overview
 
 ### 🎉 Acknowledgements
