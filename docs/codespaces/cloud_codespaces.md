@@ -21,41 +21,40 @@ GitHub Codespaces is a cloud-based development environment that allows you to co
 Before you can start using GitHub Codespaces, ensure the following prerequisites are met:
 
 1. **GitHub Account**:  
-   - You need a **GitHub Team** or **GitHub Enterprise** account to use Codespaces. Codespaces is not available for free-tier accounts.  
-   - Learn more about [GitHub Codespaces pricing](https://github.com/features/codespaces#pricing).
+   - Requires a **GitHub Team** or **GitHub Enterprise** account. Codespaces is not available for free-tier accounts.  
+   - [Learn more about pricing](https://github.com/features/codespaces#pricing).
 
 2. **Repository Access**:  
-   - Ensure the repository you want to work on is hosted on GitHub.  
-   - You must have write access to the repository to create a Codespace.
+   - The repository must be hosted on GitHub, and you need write access to create a Codespace.
 
 3. **Visual Studio Code (Optional)**:  
-   - While you can use GitHub Codespaces directly in the browser, installing **Visual Studio Code** provides a richer development experience.  
-   - Download VS Code from the [official website](https://code.visualstudio.com/).  
+   - Install **Visual Studio Code** for a richer experience.  
+   - Download from the [official website](https://code.visualstudio.com/).  
    - Install the **GitHub Codespaces** extension from the VS Code marketplace.
 
 4. **Browser Compatibility**:  
-   - Ensure you are using a modern browser (e.g., Chrome, Edge, or Firefox) to access Codespaces in the browser.
+   - Use a modern browser (e.g., Chrome, Edge, or Firefox) for browser-based access.
 
 ---
 
-## 🛠️ How to Set Up GitHub Codespaces
+## 🚀 Setting Up GitHub Codespaces
 
-1. **Enable GitHub Codespaces**:  
-   - Ensure your repository is hosted on GitHub.  
-   - Navigate to the **Settings** tab of your repository.  
-   - Under **Codespaces**, enable GitHub Codespaces for your project.
+1. **Enable Codespaces**:  
+   - Go to your repository's **Settings** > **Codespaces** and enable it.
 
 2. **Configure the `.devcontainer` Folder**:  
-   - Add a `.devcontainer` folder to your repository. This folder should include:  
-     - **[`Dockerfile`](./cloud_example/.devcontainer/Dockerfile)**: Defines the container environment and installs required tools.  
-     - **[`devcontainer.json`](./cloud_example/.devcontainer/devcontainer.json)**: Specifies VS Code extensions, settings, and configurations for the container.  
-     - **[`settings.json`](./cloud_example/.devcontainer/settings.json)**: Ensures specific extensions (e.g., Docker, Terraform, Bicep, Go, Python) are installed automatically in the Codespace.  
-   - **Example Provided**:  
-     - We have included a pre-configured `.devcontainer` example in the `./cloud_example/.devcontainer` folder. You can use this as a starting point for your own Codespaces setup.
+   - Add a `.devcontainer` folder with the following files:
+     - **[`Dockerfile`](./cloud_example/.devcontainer/Dockerfile)**: Installs tools like:
+       - Azure CLI (with Bicep CLI)
+       - Terraform
+       - OpenTofu
+       - Dagger CLI
+     - **[`devcontainer.json`](./cloud_example/.devcontainer/devcontainer.json)**: Configures VS Code extensions and settings.
+     - **[`settings.json`](./cloud_example/.devcontainer/settings.json)**: Ensures required extensions (e.g., Docker, Terraform, Bicep) are installed.
 
-3. **Start Your GitHub Codespace**:  
-   - Open your repository in GitHub and click the **Code** button.  
-   - Select the **Codespaces** tab and click **Create Codespace on Main** (or your desired branch).  
+3. **Start a Codespace**:  
+   - Open your repository on GitHub, click the **Code** button, and select the **Codespaces** tab.  
+   - Click **Create Codespace on Main** (or your desired branch).  
    - GitHub will launch the Codespace, automatically building the container using the `.devcontainer` folder.
 
 ---
