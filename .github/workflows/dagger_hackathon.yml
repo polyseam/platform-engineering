@@ -2,8 +2,8 @@ name: dagger_hackathon  # Name of the workflow
 
 on:
   pull_request:
-    branches:
-      - feature/dagger_hackathon_git_action
+    branches: [main]  # target branch of the PR
+    types: [opened, synchronize, reopened]
 
 jobs:
   dagger-plan:
