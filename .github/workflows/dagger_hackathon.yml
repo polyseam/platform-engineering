@@ -30,9 +30,9 @@ jobs:
         working-directory: docs/dagger/dagger-hackathon/
         run: |
           dagger call debug-unit-test-agent --directory-arg="." \
-          --github-token="${GITHUB_TOKEN}" \
-          --github-branch="${CURRENT_BRANCH}" \
+          --github-token="GITHUB_TOKEN" \
+          --github-branch="CURRENT_BRANCH" \
           --github-repo="codetocloudorg/platform-engineering" \
-          --azure-model="${OPENAI_MODEL}" \
-          --azure-endpoint="${OPENAI_BASE_URL}" \
-          --azure-api-key="${OPENAI_API_KEY}"
+          --azure-model="OPENAI_MODEL" \
+          --azure-endpoint="OPENAI_BASE_URL" \
+          --azure-api-key="OPENAI_API_KEY"
