@@ -1,9 +1,9 @@
 name: dagger_hackathon  # Name of the workflow
 
 on:
-    push:
-        branches:
-        - feature/dagger-hackathon-line-extraction
+  pull_request:
+    branches:
+      - feature/dagger_hackathon_git_action
 
 jobs:
   dagger-plan:
@@ -15,23 +15,24 @@ jobs:
       OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       OPENAI_MODEL: "gpt-4o"
       OPENAI_BASE_URL: "https://vdfvdf.openai.azure.com/"
+      CURRENT_BRANCH: ${{ github.head_ref }}
 
     steps:
-      - name: Checkout repository  # Fetch the repository code
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install Dagger CLI  # Download and install the Dagger CLI
+      - name: Install Dagger CLI
         run: |
           curl -fsSL https://dl.dagger.io/dagger/install.sh | BIN_DIR=$HOME/.local/bin sh
-          echo "$HOME/.local/bin" >> $GITHUB_PATH  # Add Dagger to the system PATH
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
 
-      - name: Run Dagger plan
+      - name: Dagger Run Unit Tests
         working-directory: docs/dagger/dagger-hackathon/
         run: |
-            dagger call debug-unit-test-agent --directory-arg="." \
-            --github-token="GITHUB_TOKEN" \
-            --github-branch=feature/dagger-hackathon-line-extraction \
-            --github-repo=codetocloudorg/platform-engineering \
-            --azure-model="gpt-4o" \
-            --azure-endpoint="https://vdfvdf.openai.azure.com/" \
-            --azure-api-key="OPENAI_API_KEY"
+          dagger call debug-unit-test-agent --directory-arg="." \
+          --github-token="${GITHUB_TOKEN}" \
+          --github-branch="${CURRENT_BRANCH}" \
+          --github-repo="codetocloudorg/platform-engineering" \
+          --azure-model="${OPENAI_MODEL}" \
+          --azure-endpoint="${OPENAI_BASE_URL}" \
+          --azure-api-key="${OPENAI_API_KEY}"
