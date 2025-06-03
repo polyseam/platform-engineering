@@ -126,19 +126,21 @@ class DaggerHackathon:
             .stdout()
         )
 
-        commit_id = await (
+        commit_logs = await (
             base_container
             .with_exec([
                 "gh", "pr", "view",
                 pr_number.strip(),
-                "--json", "headRefOid",
-                "-q", ".headRefOid",
+                "--json", "commits",
                 "--repo", f"{github_repo}"
             ])
             .stdout()
         )
 
-        output = PrMetadataResult(pr_number=pr_number.strip(), commit_id=commit_id.strip())
+        commit_logs_json = json.loads(commit_logs)
+        head_commit_id = commit_logs_json["commits"][-1]["oid"]
+
+        output = PrMetadataResult(pr_number=pr_number.strip(), commit_id=head_commit_id.strip())
         
         return output
 
