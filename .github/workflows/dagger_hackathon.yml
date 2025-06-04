@@ -11,10 +11,7 @@ jobs:
 
     env:
       GITHUB_TOKEN: ${{ secrets.DAGGER_HACKATHON_GITHUB_TOKEN }}
-      OPENAI_AZURE_VERSION: "2024-12-01-preview"
       OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-      OPENAI_MODEL: "gpt-4o"
-      OPENAI_BASE_URL: "https://vdfvdf.openai.azure.com/"
       CURRENT_BRANCH: ${{ github.head_ref }}
 
     steps:
@@ -33,6 +30,6 @@ jobs:
           --github-token=GITHUB_TOKEN \
           --github-branch="feature/dagger_hackathon_git_action" \
           --github-repo="codetocloudorg/platform-engineering" \
-          --azure-model=OPENAI_MODEL \
+          --azure-model="gpt-4o" \
           --azure-endpoint="https://vdfvdf.openai.azure.com/" \
           --azure-api-key=OPENAI_API_KEY
