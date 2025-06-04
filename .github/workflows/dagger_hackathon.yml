@@ -36,10 +36,12 @@ jobs:
 
       - name: Dagger Run Unit Tests
         working-directory: docs/dagger/dagger-hackathon/
+        env:
+          DAGGER_SECRET_GITHUB_TOKEN: ${{ secrets.DAGGER_HACKATHON_GITHUB_TOKEN }}
         run: |
           export AZURE_OPENAI_API_KEY="${OPENAI_API_KEY}"
           export AZURE_OPENAI_ENDPOINT="https://vdfvdf.openai.azure.com/"
-          export GITHUB_TOKEN="${GITHUB_TOKEN}"
+          export GITHUB_TOKEN="${DAGGER_SECRET_GITHUB_TOKEN}"  # 👈 Dagger will treat this as a secret
 
           dagger call debug-unit-test-agent --directory-arg="." \
             --github-token="${GITHUB_TOKEN}" \
@@ -48,4 +50,3 @@ jobs:
             --azure-model="gpt-4o" \
             --azure-endpoint="${AZURE_OPENAI_ENDPOINT}" \
             --azure-api-key="${AZURE_OPENAI_API_KEY}"
-
