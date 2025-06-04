@@ -6,7 +6,7 @@ on:
     types: [opened, synchronize, reopened]
 
 jobs:
-  dagger-plan:
+  dagger-run-unit-tests:
     runs-on: ubuntu-latest  # Define the runner environment
 
     env:
@@ -30,9 +30,9 @@ jobs:
         working-directory: docs/dagger/dagger-hackathon/
         run: |
           dagger call debug-unit-test-agent --directory-arg="." \
-          --github-token="GITHUB_TOKEN" \
+          --github-token=GITHUB_TOKEN \
           --github-branch="feature/dagger_hackathon_git_action" \
           --github-repo="codetocloudorg/platform-engineering" \
-          --azure-model="OPENAI_MODEL" \
-          --azure-endpoint="OPENAI_BASE_URL" \
-          --azure-api-key="OPENAI_API_KEY"
+          --azure-model=OPENAI_MODEL \
+          --azure-endpoint=OPENAI_BASE_URL \
+          --azure-api-key=OPENAI_API_KEY
