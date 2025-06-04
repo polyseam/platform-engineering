@@ -31,7 +31,7 @@ jobs:
         run: |
           dagger call debug-unit-test-agent --directory-arg="." \
           --github-token="GITHUB_TOKEN" \
-          --github-branch="CURRENT_BRANCH" \
+          --github-branch="feature/dagger_hackathon_git_action" \
           --github-repo="codetocloudorg/platform-engineering" \
           --azure-model="OPENAI_MODEL" \
           --azure-endpoint="OPENAI_BASE_URL" \
