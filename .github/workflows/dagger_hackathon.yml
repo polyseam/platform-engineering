@@ -23,6 +23,17 @@ jobs:
           curl -fsSL https://dl.dagger.io/dagger/install.sh | BIN_DIR=$HOME/.local/bin sh
           echo "$HOME/.local/bin" >> $GITHUB_PATH
 
+      - name: Create .env file
+        working-directory: docs/dagger/dagger-hackathon/
+        run: |
+          cat <<EOF > .env
+          OPENAI_BASE_URL="https://vdfvdf.openai.azure.com/"
+          OPENAI_MODEL=gpt-4o
+          OPENAI_API_KEY=${OPENAI_API_KEY}
+          OPENAI_AZURE_VERSION=2024-12-01-preview
+          GITHUB_TOKEN=${GITHUB_TOKEN}
+          EOF
+
       - name: Dagger Run Unit Tests
         working-directory: docs/dagger/dagger-hackathon/
         run: |
