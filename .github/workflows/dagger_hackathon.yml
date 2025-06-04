@@ -34,5 +34,5 @@ jobs:
           --github-branch="feature/dagger_hackathon_git_action" \
           --github-repo="codetocloudorg/platform-engineering" \
           --azure-model=OPENAI_MODEL \
-          --azure-endpoint=OPENAI_BASE_URL \
+          --azure-endpoint="https://vdfvdf.openai.azure.com/" \
           --azure-api-key=OPENAI_API_KEY
