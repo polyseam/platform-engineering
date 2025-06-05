@@ -107,7 +107,7 @@ Make sure to follow the prerequisites defined [here](../README.md) in the main D
   export GITHUB_TOKEN="XXX"
   ```
 
-- Copy/paste and run:
+- Put in your values and run in CLI:
   ```bash
   dagger call \
     --source="." \
