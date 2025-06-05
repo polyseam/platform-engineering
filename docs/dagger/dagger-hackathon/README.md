@@ -10,7 +10,9 @@ Welcome to the Dagger hackathon hosted by the CNCF and Code to Cloud! By the end
 
 ✅ Dagger pipeline triggers LLM workflow if tests fail
 
-✅ LLM provides feedback on why tests could be failing in a PR
+✅ LLM provides code suggestion to fix failing unit tests
+
+✅ Code suggestion is added to PR
 
 ## ✅ Prerequisites
 
@@ -18,33 +20,129 @@ There are two options for this hackathon. We highly recommend the first option t
 
 ### 1️⃣ Option 1: Github Codespace
 
+See Getting Started
+
 ### 2️⃣ Option 2: Local
 
 Make sure to follow the prerequisites defined [here](../README.md) in the main Dagger README.
 
-## 🔨 Implementation
+## 🔨 Getting Started
 
-All the code for the below can be found [here](./dagger-hackathon-pipeline/).
+---
 
-Make sure you have the repo cloned and you are in the `docs\dagger\dagger-hackathon-pipeline` directory:
+### ✅ Step 1: Create a Dagger Cloud Account
 
-```bash
-# Clone the repository from GitHub
-git clone https://github.com/codetocloudorg/platform-engineering.git
+- [Register for a account](https://dagger.io/cloud)  
+- Under settings, create a `DAGGER_CLOUD_TOKEN` and copy the secret password somewhere temporary
 
-# Change directory to the Dagger hackathon pipeline documentation folder
-cd ./docs/dagger/dagger-hackathon-pipeline
-```
+---
 
-### Step 1: Create a Feature Branch
+### ✅ Step 2: Fork This Repository
 
-### 🤖 Step 2: Select your LLM Provider
+- Create a fork of this repository to your personal GitHub account  
+  If you already have a fork, either rebase to this repository or, if you don't have any work you want to keep, just delete and recreate.
 
-### Step 3: Create a PR
+- In the UI, create a new feature branch off `main`
 
-### Step 4: Run the Dagger Function
+---
 
-## Gothcas
-1. Sometimes the LLM that reviews the failed unit test logs returns a incorrect path to the file with breaking changes, incorrect line number of the breaking change, or incorrect fix (i.e. too verbose)
-2. Current state of this does not work with multi-line code changes or multiple breaking changes. 1 breaking change on 1 line
-3. The way commit id is retrieved is not robust - if I have a breaking change that is pushed to a branch with a open PR and it is commit id 1 and I then commit another file the latest commmit id becomes 2. The code is setup to grab latest commit id and not commit id of file causing breaking change so it will fail (i.e. no diff)
+### ✅ Step 2: Setup Codespace *(if you are setting up locally skip to Step 3)*
+
+- In the GitHub UI, change to the newly created feature branch  
+- Create a codespace on the feature branch  
+
+  <img width="908" alt="image" src="https://github.com/user-attachments/assets/6d98a55a-207f-4389-b976-582fc3dec983" />
+
+- This will auto-open VS Code in browser. If you don't want to work from here and have the VS Code app installed, you can close this and open it in the app  
+
+  ![image](https://github.com/user-attachments/assets/6b6b0702-b083-4e33-8868-675bfd6e5fc9)
+
+---
+
+### ✅ Step 3: Setup Locally *(if you did Step 2 then skip to Step 4)*
+
+#### 🔧 Install required prerequisites
+
+- Python 3.11+  
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/) or another container runtime (e.g. Colima on macOS and Linux)  
+- [Dagger CLI](https://docs.dagger.io/install/)
+
+#### 🔧 Additional Setup
+
+- Start your container runtime  
+- Clone the forked repository locally and switch to the newly created feature branch  
+
+---
+
+### ✅ Step 4: Break Some Code and Open A PR
+
+- Open a terminal  
+- Create an environment variable for `DAGGER_CLOUD_TOKEN`, e.g.  
+  ```bash
+  export DAGGER_CLOUD_TOKEN="XXX"
+  ```
+- Change directory into `docs/dagger/dagger-hackathon/`  
+- Open the file `docs/dagger/dagger-hackathon/src/addition.py` and break the function  
+  For example, modify to: `return a + b * 4`  
+- Run the unittests  
+  ```bash
+  python -m unittest discover tests -v
+  ```
+  and confirm it fails  
+- Push the modified `addition.py` to your new feature branch  
+- In the GitHub UI, open a PR on the feature branch and compare to `main`
+
+---
+
+### ✅ Step 5: Run The Fix My Tests Agent
+
+- Rename `docs/dagger/dagger-hackathon/.env-example` to `.env`  
+- Populate the placeholder keys with real values (we will provide for Hackathon day)  
+- Create environment variables for `GITHUB_TOKEN` and `AZURE_API_KEY`  
+  A GitHub Token can be created in GitHub under Settings → Developer Settings → Create a classic token  
+  Example:
+  ```bash
+  export GITHUB_TOKEN="XXX"
+  ```
+
+- Copy/paste and run:
+  ```bash
+  dagger call \
+    --source="." \
+    --github_branch="BRANCH-NAME" \
+    --github_repo="USERNAME/REPO-NAME" \
+    --github_token="GITHUB_TOKEN" \
+    --azure_api_key="AZURE_API_KEY" \
+    --azure_endpoint="PATH" \
+    fix-my-tests-agent
+  ```
+
+- If you see an error, it might be that the Agent has hallucinated — try again  
+  You can also debug via the Dagger Traces in Dagger Cloud
+
+---
+
+### ✅ Step 6: Confirm The Agent Fixed the Code
+
+- If the Agent finished successfully, you should see something like below in the CLI  
+- Click the PR URL and see if there is a suggested code change
+
+---
+
+### ✅ Step 7: Trigger GitHub Action
+
+- Delete the comment the Agent left on the PR in Step 6  
+- Create GitHub secrets for everything in `.env` and `GITHUB_TOKEN` and `AZURE_API_KEY`  
+
+> **TO DO:** Finish this section
+
+---
+
+## ⚠️ Gotchas and Future Improvements
+
+- The agent can sometimes return incorrect paths to the file with breaking changes, incorrect line number of the breaking change, or incorrect fix (e.g. too verbose)  
+- Current state of this does not work with multi-line code changes or multiple breaking changes.  
+  Only supports **1 breaking change on 1 line**  
+- The way commit ID is retrieved is not robust — if a breaking change is pushed to a branch with an open PR and it is commit ID A, and then another file is pushed (commit ID B),  
+  the code is setup to grab the **latest commit ID**, not the one with the breaking change  
+  This may result in failure (i.e. no diff)
