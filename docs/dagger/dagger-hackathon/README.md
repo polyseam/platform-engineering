@@ -100,7 +100,7 @@ Make sure to follow the prerequisites defined [here](../README.md) in the main D
 
 - Rename `docs/dagger/dagger-hackathon/.env-example` to `.env`  
 - Populate the placeholder keys with real values (we will provide for Hackathon day)  
-- Create environment variables for `GITHUB_TOKEN` and `AZURE_API_KEY`  
+- Create environment variables for `GITHUB_TOKEN`, `AZURE_API_KEY`, `AZURE_API_ENDPOINT`   
   A GitHub Token can be created in GitHub under Settings → Developer Settings → Create a classic token  
   Example:
   ```bash
@@ -115,7 +115,7 @@ Make sure to follow the prerequisites defined [here](../README.md) in the main D
     --github_repo="USERNAME/REPO-NAME" \
     --github_token="GITHUB_TOKEN" \
     --azure_api_key="AZURE_API_KEY" \
-    --azure_endpoint="PATH" \
+    --azure_endpoint="AZURE_API_ENDPOINT" \
     fix-my-tests-agent
   ```
 
