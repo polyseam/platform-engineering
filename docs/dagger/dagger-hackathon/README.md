@@ -35,7 +35,7 @@ Make sure to follow the prerequisites defined [here](../README.md) in the main D
 - [Register for a account](https://dagger.io/cloud)  
 - Under settings, create a `DAGGER_CLOUD_TOKEN` and copy the secret password somewhere temporary
 
-> **Note:** This will be used to enable logging on the Dagger pipeline. Logs can be viewed in [Dagger Cloud](ttps://dagger.io/cloud) after step 5
+> **Note:** This will be used to enable logging on the Dagger pipeline. Logs can be viewed in [Dagger Cloud](https://dagger.io/cloud) after step 5
 
 ---
 
