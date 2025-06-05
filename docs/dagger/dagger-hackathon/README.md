@@ -43,3 +43,8 @@ cd ./docs/dagger/dagger-hackathon-pipeline
 ### Step 3: Create a PR
 
 ### Step 4: Run the Dagger Function
+
+## Gothcas
+1. Sometimes the LLM that reviews the failed unit test logs returns a incorrect path to the file with breaking changes, incorrect line number of the breaking change, or incorrect fix (i.e. too verbose)
+2. Current state of this does not work with multi-line code changes or multiple breaking changes. 1 breaking change on 1 line
+3. The way commit id is retrieved is not robust - if I have a breaking change that is pushed to a branch with a open PR and it is commit id 1 and I then commit another file the latest commmit id becomes 2. The code is setup to grab latest commit id and not commit id of file causing breaking change so it will fail (i.e. no diff)
