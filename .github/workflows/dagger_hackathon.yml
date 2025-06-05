@@ -41,10 +41,9 @@ jobs:
         run: |
           export AZURE_OPENAI_API_KEY="${OPENAI_API_KEY}"
           export AZURE_OPENAI_ENDPOINT="https://vdfvdf.openai.azure.com/"
-          dagger call debug-unit-test-agent --directory-arg="." \
-            --github-token=DAGGER_SECRET_GITHUB_TOKEN \
-            --github-branch="${CURRENT_BRANCH}" \
-            --github-repo="codetocloudorg/platform-engineering" \
-            --azure-model="gpt-4o" \
-            --azure-endpoint="https://vdfvdf.openai.azure.com/" \
-            --azure-api-key="OPENAI_API_KEY"
+          dagger call debug-unit-test-agent ---source="." \
+            --github_token=DAGGER_SECRET_GITHUB_TOKEN \
+            --github_branch="${CURRENT_BRANCH}" \
+            --github_repo="codetocloudorg/platform-engineering" \
+            --azure_endpoint="https://vdfvdf.openai.azure.com/" \
+            --azure_api_key="OPENAI_API_KEY"

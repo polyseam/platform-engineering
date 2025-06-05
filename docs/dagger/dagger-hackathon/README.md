@@ -173,6 +173,8 @@ on:
 
 - Push your changes to Git and navigate back to your forked repo to see the GitHub Action running
 
+![image](./assets/run_unit_tests.png)
+
 ---
 
 ## ⚠️ Gotchas and Future Improvements
