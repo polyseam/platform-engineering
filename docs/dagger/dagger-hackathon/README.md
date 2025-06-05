@@ -124,7 +124,10 @@ Make sure to follow the prerequisites defined [here](../README.md) in the main D
 
 ### ✅ Step 6: Confirm The Agent Fixed the Code
 
-- If the Agent finished successfully, you should see something like below in the CLI  
+- If the Agent finished successfully, you should see something like below in the CLI
+  ```
+  AgentResponse(pr_metadata=PrMetadataResult(pr_number='1', commit_id='c4293304b9fdccf2022e7e15e09e5b1604cecf04'), pr_suggestions=GitHubPrSuggestionResult(body='```suggestion\nreturn a + b\n```', comment_url='https://github.com/david-hurley/platform-engineering/pull/1#discussion_r2127910154'))
+  ```
 - Click the PR URL and see if there is a suggested code change
 
 ---
