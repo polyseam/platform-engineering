@@ -42,8 +42,8 @@ jobs:
           export AZURE_OPENAI_API_KEY="${OPENAI_API_KEY}"
           export AZURE_OPENAI_ENDPOINT="https://vdfvdf.openai.azure.com/"
           dagger call fix-my-tests-agent --source="." \
-            --github_token=DAGGER_SECRET_GITHUB_TOKEN \
-            --github_branch="${CURRENT_BRANCH}" \
-            --github_repo="codetocloudorg/platform-engineering" \
-            --azure_endpoint="https://vdfvdf.openai.azure.com/" \
-            --azure_api_key="OPENAI_API_KEY"
+            --github-token=DAGGER_SECRET_GITHUB_TOKEN \
+            --github-branch="${CURRENT_BRANCH}" \
+            --github-repo="codetocloudorg/platform-engineering" \
+            --azure-endpoint="https://vdfvdf.openai.azure.com/" \
+            --azure-api-key="OPENAI_API_KEY"
