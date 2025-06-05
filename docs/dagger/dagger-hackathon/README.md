@@ -35,6 +35,8 @@ Make sure to follow the prerequisites defined [here](../README.md) in the main D
 - [Register for a account](https://dagger.io/cloud)  
 - Under settings, create a `DAGGER_CLOUD_TOKEN` and copy the secret password somewhere temporary
 
+> **Note:** This will be used to enable logging on the Dagger pipeline. Logs can be viewed in [Dagger Cloud](ttps://dagger.io/cloud) after step 5
+
 ---
 
 ### ✅ Step 2: Fork This Repository
@@ -122,7 +124,23 @@ Make sure to follow the prerequisites defined [here](../README.md) in the main D
 
 ---
 
-### ✅ Step 6: Confirm The Agent Fixed the Code
+### ✅ Step 6: Explore Dagger Traces
+
+Being able to navigate and explore logs in Dagger Cloud is a great skill to have to be able to effectively troubleshoot and build pipelines in Dagger. Now that we have ran our first command in Dagger, lets jump into the logs to see what happened.
+
+- Navigate to [Dagger Cloud](https://dagger.io/cloud)
+- You should see your trace(s)
+
+![image](./assets/dagger_cloud.png)
+
+- Select a trace and explore the logs
+- If all has gone well, you should see something like this at the bottom of the trace detailing the problematic file, line number, and fix for the failing unit test.
+
+![image](./assets/agent_final_output.png)
+
+---
+
+### ✅ Step 7: Confirm The Agent Fixed the Code
 
 - If the Agent finished successfully, you should see something like below in the CLI
   ```
@@ -132,12 +150,28 @@ Make sure to follow the prerequisites defined [here](../README.md) in the main D
 
 ---
 
-### ✅ Step 7: Trigger GitHub Action
+### ✅ Step 8: Trigger GitHub Action
 
 - Delete the comment the Agent left on the PR in Step 6  
-- Create GitHub secrets for everything in `.env` and `GITHUB_TOKEN` and `AZURE_API_KEY`  
+- [Create GitHub secrets](https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions#creating-secrets-for-a-repository) for everything in `.env` and name them `DAGGER_HACKATHON_GITHUB_TOKEN` and `OPENAI_API_KEY` for the GitHub token and Azure OpenAI API key respectively.
+- Make sure to update your GitHub Action to trigger on a pull request instead of a manual trigger.
 
-> **TO DO:** Finish this section
+Update the trigger from this:
+
+```yaml
+on:
+  workflow_dispatch:
+```
+
+To this:
+```yaml
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened]
+```
+
+- Push your changes to Git and navigate back to your forked repo to see the GitHub Action running
 
 ---
 
