@@ -199,6 +199,8 @@ on:
 
 The last step is to extend the Dagger agent to actually make the code fix itself and push the changes to the PR for the human to review. That way there is still a human-in-the-loop to validate the AI output.
 
+---
+
 ## ⚠️ Gotchas and Future Improvements
 
 - The agent can sometimes return incorrect paths to the file with breaking changes, incorrect line number of the breaking change, or incorrect fix (e.g. too verbose)  
