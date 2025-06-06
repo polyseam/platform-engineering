@@ -1,6 +1,6 @@
 # 🧑‍💻 Dagger Hackathon: June 18th, 2025
 
-Welcome to the Dagger hackathon hosted by the CNCF and Code to Cloud! By the end of this hack, you will have a good understanding of how to use Dagger and the various use cases it can help support.
+Welcome to the Dagger hackathon hosted by the [CNCF](https://community.cncf.io/cloud-native-calgary/) and [Code to Cloud](https://www.codetocloud.io/)! By the end of this hack, you will have a good understanding of how to use Dagger and the various use cases it can help support.
 
 ## 🎯 Expected Outcomes
 
@@ -24,6 +24,8 @@ See Getting Started
 
 ### 2️⃣ Option 2: Local
 
+<img src="./assets/one_does_not_simply_meme.jpg" alt="anakin" width="400"/>
+
 Make sure to follow the prerequisites defined [here](../README.md) in the main Dagger README.
 
 ## 🔨 Getting Started
@@ -35,7 +37,7 @@ Make sure to follow the prerequisites defined [here](../README.md) in the main D
 - [Register for a account](https://dagger.io/cloud)  
 - Under settings, create a `DAGGER_CLOUD_TOKEN` and copy the secret password somewhere temporary
 
-> **Note:** This will be used to enable logging on the Dagger pipeline. Logs can be viewed in [Dagger Cloud](https://dagger.io/cloud) after step 5
+> **Note:** This will be used to enable logging on the Dagger pipeline. Logs can be viewed in [Dagger Cloud](https://dagger.io/cloud) after step 5.
 
 ---
 
@@ -78,6 +80,12 @@ Make sure to follow the prerequisites defined [here](../README.md) in the main D
 
 ### ✅ Step 4: Break Some Code and Open A PR
 
+<img src="./assets/anakin_meme.webp" alt="anakin" width="400"/>
+
+Now that we have all of our prerequisites setup, **this is where the fun begins!**
+
+The below steps will take you through making a breaking change to a file in our application which will set us up in the next step to have our agent try and troubleshoot it.
+
 - Open a terminal  
 - Create an environment variable for `DAGGER_CLOUD_TOKEN`, e.g.  
   ```bash
@@ -97,6 +105,8 @@ Make sure to follow the prerequisites defined [here](../README.md) in the main D
 ---
 
 ### ✅ Step 5: Run The Fix My Tests Agent
+
+<img src="./assets/spongebob_meme.jpg" alt="spongebob" width="400"/>
 
 - Rename `docs/dagger/dagger-hackathon/.env-example` to `.env`  
 - Populate the placeholder keys with real values (we will provide for Hackathon day)  
@@ -119,12 +129,18 @@ Make sure to follow the prerequisites defined [here](../README.md) in the main D
     fix-my-tests-agent
   ```
 
+> **💡 Tip:** This will be used to enable logging on the Dagger pipeline. Logs can be viewed in [Dagger Cloud](https://dagger.io/cloud) after step 5.
+
 - If you see an error, it might be that the Agent has hallucinated — try again  
   You can also debug via the Dagger Traces in Dagger Cloud
+
+> **💡 Tip:** There is a prompt located at `docs\dagger\dagger-hackathon\dagger-hackathon-pipeline\debug_unit_test_prompt.md` that greatly influences the LLMs behavior. Make some changes to the prompt and see how it influences the results!
 
 ---
 
 ### ✅ Step 6: Explore Dagger Traces
+
+<img src="./assets/fry_meme.jpg" alt="fry" width="400"/>
 
 Being able to navigate and explore logs in Dagger Cloud is a great skill to have to be able to effectively troubleshoot and build pipelines in Dagger. Now that we have ran our first command in Dagger, lets jump into the logs to see what happened.
 
@@ -141,6 +157,8 @@ Being able to navigate and explore logs in Dagger Cloud is a great skill to have
 ---
 
 ### ✅ Step 7: Confirm The Agent Fixed the Code
+
+<img src="./assets/pikachu_meme.jpg" alt="fry" width="400"/>
 
 - If the Agent finished successfully, you should see something like below in the CLI
   ```
@@ -177,6 +195,10 @@ on:
 
 ---
 
+### ✅ Step 9: Extend the Agent
+
+The last step is to extend the Dagger agent to actually make the code fix itself and push the changes to the PR for the human to review. That way there is still a human-in-the-loop to validate the AI output.
+
 ## ⚠️ Gotchas and Future Improvements
 
 - The agent can sometimes return incorrect paths to the file with breaking changes, incorrect line number of the breaking change, or incorrect fix (e.g. too verbose)  
@@ -185,3 +207,4 @@ on:
 - The way commit ID is retrieved is not robust — if a breaking change is pushed to a branch with an open PR and it is commit ID A, and then another file is pushed (commit ID B),  
   the code is setup to grab the **latest commit ID**, not the one with the breaking change  
   This may result in failure (i.e. no diff)
+- The agent leaves a comment on the PR as the idenity of whoever generated to token. In other words, if you leverage your GitHub token in the above steps, then the agent will leave a comment on the PR as you. This ideally should be a generic account in the future.
